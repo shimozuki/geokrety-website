@@ -25,9 +25,9 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-            <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
-                {include file="navbar-profile.tpl"}
-            </ul>
+{*            <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">*}
+{*                {include file="navbar-profile.tpl"}*}
+{*            </ul>*}
 
             <ul class="nav navbar-nav">
                 <li><a id="navbar-home" href="{'home'|alias}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> {t}Home{/t}</a></li>
@@ -87,12 +87,17 @@
                         <li><a id="navbar-resolver" href="go2geo/">{fa icon="map-pin"} {t}Waypoint resolver{/t}</a></li>
                     </ul>
                 </li>
-                {if is_null(GK_SMTP_HOST)}
+                {if GK_DEVEL}
                 <li>
-                    <p class="navbar-btn">
-                        <a id="navbar-localmail" href="{'local_mail_list'|alias}" class="btn btn-danger btn-block">
-                            {fa icon="envelope"} Dev Mailbox <span class="badge">{if is_countable($f3->get('SESSION.LOCAL_MAIL'))}{$f3->get('SESSION.LOCAL_MAIL')|count}{else}0{/if}</span>
-                        </a>
+                    <div class="navbar-btn"><
+                        <div class="btn-group" role="group">
+                            <a id="navbar-localmail" href="{'devel_home'|alias}" class="btn btn-danger">
+                                {fa icon="wrench"} Dev
+                            </a>
+                            <a id="navbar-localmail" href="{'devel_mail_list'|alias}" class="btn btn-danger">
+                                {fa icon="envelope"} Mailbox <span class="badge">{if is_countable($f3->get('SESSION.LOCAL_MAIL'))}{$f3->get('SESSION.LOCAL_MAIL')|count}{else}0{/if}</span>
+                            </a>
+                        </div>
                     </p>
                 </li>
                 {/if}

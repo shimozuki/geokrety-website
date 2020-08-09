@@ -1,0 +1,19 @@
+*** Settings ***
+Library         SeleniumLibrary  timeout=10  implicit_wait=0
+Library         DependencyLibrary
+Resource        ../functions/PageGeoKretyCreate.robot
+Resource        ../vars/users.resource
+Resource        ../vars/geokrety.resource
+Force Tags      CreateAccount
+
+*** Test Cases ***
+
+Seed
+    Clear Database
+    Seed 1 users
+    Sign In ${USER_1.name} Fast
+
+Create A GeoKret
+    Go To Url                           ${PAGE_GEOKRETY_CREATE_URL}
+    Create GeoKret                      ${GEOKRETY_1}
+    Element Should Contain              ${GEOKRET_DETAILS_NAME}         ${GEOKRETY_1.name}

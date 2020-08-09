@@ -63,9 +63,11 @@ class Config extends \Prefab {
         if (GK_IS_PRODUCTION) {
             define('GK_DEBUG', false);
             define('GK_F3_DEBUG', false);
+            define('GK_DEVEL', false);
         } else {
             define('GK_DEBUG', getenv('GK_DEBUG') ? filter_var(getenv('GK_DEBUG'), FILTER_VALIDATE_BOOLEAN) : false);
-            define('GK_F3_DEBUG', getenv('GK_F3_DEBUG') ?: true);
+            define('GK_F3_DEBUG', getenv('GK_F3_DEBUG') ? filter_var(getenv('GK_F3_DEBUG'), FILTER_VALIDATE_BOOLEAN) : true);
+            define('GK_DEVEL', getenv('GK_DEVEL') ? filter_var(getenv('GK_DEVEL'), FILTER_VALIDATE_BOOLEAN) : false);
         }
         define('GK_APP_NAME', getenv('GK_APP_NAME') ?: 'www');
         define('GK_APP_VERSION', getenv('GIT_COMMIT') ?: 'undef');
@@ -128,10 +130,16 @@ class Config extends \Prefab {
         define('GK_USER_STATPIC_TEMPLATE_COUNT', getenv('GK_USER_STATPIC_TEMPLATE_COUNT') ?: 9);
         define('GK_USER_STATPIC_FONT', getenv('GK_USER_STATPIC_FONT') ?: 'RobotoCondensed-Regular.ttf');
 
-        // google api
-        define('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY', getenv('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY') ?: false);
-        define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', getenv('GK_GOOGLE_RECAPTCHA_SECRET_KEY') ?: false);
-        define('GK_GOOGLE_RECAPTCHA_JS_URL', getenv('GK_GOOGLE_RECAPTCHA_JS_URL') ?: 'https://www.google.com/recaptcha/api.js');
+        // Google Recaptcha
+        if (!GK_DEVEL) {
+            define('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY', getenv('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY') ?: false);
+            define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', getenv('GK_GOOGLE_RECAPTCHA_SECRET_KEY') ?: false);
+            define('GK_GOOGLE_RECAPTCHA_JS_URL', getenv('GK_GOOGLE_RECAPTCHA_JS_URL') ?: 'https://www.google.com/recaptcha/api.js');
+        } else {
+            define('GK_GOOGLE_RECAPTCHA_PUBLIC_KEY', false);
+            define('GK_GOOGLE_RECAPTCHA_SECRET_KEY', false);
+            define('GK_GOOGLE_RECAPTCHA_JS_URL', '');
+        }
 
         // OpAuth
         define('GK_OPAUTH_SECURITY_SALT', getenv('GK_OPAUTH_SECURITY_SALT') ?: false);
@@ -170,16 +178,20 @@ class Config extends \Prefab {
         define('GK_PAGINATION_PICTURES_GALLERY', getenv('GK_PAGINATION_PICTURES_GALLERY') ?: 36);
 
         // TTL LIMITS
-        define('GK_SITE_CACHE_TTL_WAYPOINT', getenv('GK_SITE_CACHE_TTL_WAYPOINT') ?: 3600);
-        define('GK_SITE_CACHE_TTL_STATS', getenv('GK_SITE_CACHE_TTL_STATS') ?: 600);
-        define('GK_SITE_CACHE_TTL_LATEST_NEWS', getenv('GK_SITE_CACHE_TTL_LATEST_NEWS') ?: 60);
-        define('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY') ?: 60);
-        define('GK_SITE_CACHE_TTL_LATEST_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_GEOKRETY') ?: 60);
-        define('GK_SITE_CACHE_TTL_LATEST_PICTURES', getenv('GK_SITE_CACHE_TTL_LATEST_PICTURES') ?: 60);
-        define('GK_SITE_CACHE_TTL_PICTURE_CAPTION', getenv('GK_SITE_CACHE_TTL_PICTURE_CAPTION') ?: 600);
-        define('GK_SITE_CACHE_TTL_LABELS_LIST', getenv('GK_SITE_CACHE_TTL_LABELS_LIST') ?: 600);
-        define('GK_SITE_CACHE_TTL_LABELS_LOOKUP', getenv('GK_SITE_CACHE_TTL_LABELS_LOOKUP') ?: 600);
-        define('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS', getenv('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS') ?: 600);
+        define('GK_SITE_CACHE_TTL_WAYPOINT', getenv('GK_SITE_CACHE_TTL_WAYPOINT') ?: (GK_DEVEL ? 0 : 3600));
+        define('GK_SITE_CACHE_TTL_STATS', getenv('GK_SITE_CACHE_TTL_STATS') ?: (GK_DEVEL ? 0 : 600));
+        define('GK_SITE_CACHE_TTL_LATEST_NEWS', getenv('GK_SITE_CACHE_TTL_LATEST_NEWS') ?: (GK_DEVEL ? 0 : 60));
+        define('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_MOVED_GEOKRETY') ?: (GK_DEVEL ? 0 : 60));
+        define('GK_SITE_CACHE_TTL_LATEST_GEOKRETY', getenv('GK_SITE_CACHE_TTL_LATEST_GEOKRETY') ?: (GK_DEVEL ? 0 : 60));
+        define('GK_SITE_CACHE_TTL_LATEST_PICTURES', getenv('GK_SITE_CACHE_TTL_LATEST_PICTURES') ?: (GK_DEVEL ? 0 : 60));
+        define('GK_SITE_CACHE_TTL_PICTURE_CAPTION', getenv('GK_SITE_CACHE_TTL_PICTURE_CAPTION') ?: (GK_DEVEL ? 0 : 600));
+        define('GK_SITE_CACHE_TTL_LABELS_LIST', getenv('GK_SITE_CACHE_TTL_LABELS_LIST') ?: (GK_DEVEL ? 0 : 600));
+        define('GK_SITE_CACHE_TTL_LABELS_LOOKUP', getenv('GK_SITE_CACHE_TTL_LABELS_LOOKUP') ?: (GK_DEVEL ? 0 : 600));
+        define('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS', getenv('GK_SITE_CACHE_TTL_SOCIAL_AUTH_PROVIDERS') ?: (GK_DEVEL ? 0 : 600));
+
+        // JS TIMEOUTS
+        define('GK_OBSERVATION_AREA_RADIUS_TIMEOUT', getenv('GK_OBSERVATION_AREA_RADIUS_TIMEOUT') ?: (GK_DEVEL ? 500 : 100));
+        define('GK_PICTURE_UPLOAD_REFRESH_TIMEOUT', getenv('GK_PICTURE_UPLOAD_REFRESH_TIMEOUT') ?: (GK_DEVEL ? 1500 : 500));
 
         // API LIMITS
         define('GK_API_EXPORT_LIMIT_DAYS', getenv('GK_API_EXPORT_LIMIT_DAYS') ?: 10);

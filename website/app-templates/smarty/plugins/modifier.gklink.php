@@ -16,7 +16,7 @@ function smarty_modifier_gklink(\GeoKrety\Model\Geokret $geokret, ?string $textS
     $target_html = is_null($target) ? '' : ' target="'.$target.'"';
 
     return sprintf(
-        '<a href="%s" title="%s"%s>%s</a>',
+        '<a href="%s" data-gk-link="geokret" title="%s"%s>%s</a>',
         \Base::instance()->alias('geokret_details', '@gkid='.$geokret->gkid),
         sprintf(_('View %s\'s profile'), smarty_modifier_escape($geokret->name)),
         $target_html,

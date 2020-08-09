@@ -60,10 +60,14 @@ class Login extends Base {
     public function logout(\Base $f3) {
         $user = new User();
         $user->load(['id = ?', $f3->get('SESSION.CURRENT_USER')]);
-        $f3->clear('SESSION');
-        $f3->clear('COOKIE.PHPSESSID');
+        self::disconnectUser($f3);
         Event::instance()->emit('user.logout', $user);
         $f3->reroute('@home');
+    }
+
+    public static function disconnectUser(\Base $f3) {
+        $f3->clear('SESSION');
+        $f3->clear('COOKIE.PHPSESSID');
     }
 
     public static function connectUser(\Base $f3, User $user) {

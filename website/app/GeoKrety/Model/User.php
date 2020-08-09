@@ -269,7 +269,7 @@ class User extends Base implements JsonSerializable {
     }
 
     protected function generateAccountActivation(): void {
-        if (empty($this->email)) {
+        if (is_null($this->email) or $this->account_valid === self::USER_ACCOUNT_VALID) {
             // skip sending mail
             return;
         }

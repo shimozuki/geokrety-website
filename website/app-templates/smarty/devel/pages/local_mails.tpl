@@ -9,7 +9,7 @@
 <h1>Developer Mailbox</h1>
 {if $f3->get('SESSION.LOCAL_MAIL')}
 <div class="table-responsive">
-    <table class="table table-striped">
+    <table class="table table-striped" id="mailsTable">
         <thead>
             <tr>
                 <th>{t}ID{/t}</th>
@@ -18,7 +18,7 @@
                 <th>{t}To{/t}</th>
                 <th class="text-right">
                     {t}Action{/t}
-                    <a href="{'local_mail_delete_all'|alias}" class="btn btn-danger btn-xs" title="{t}Delete all mails{/t}">
+                    <a href="{'devel_mail_delete_all'|alias}" id="deleteAllMailsButton" class="btn btn-danger btn-xs" title="{t}Delete all mails{/t}">
                         {fa icon="trash"}
                     </a>
                 </th>
@@ -27,16 +27,16 @@
         <tbody>
             {foreach from=$f3->get('SESSION.LOCAL_MAIL') item=item key=key}
             <tr {if !$item.read}class="bold"{/if}>
-                <td>{$key}</td>
+                <td class="mail_id">{$key}</td>
                 <td>
-                    <a href="{'local_mail'|alias:sprintf('@mailid=%d', $key)}">
-                        {$item.smtp->Subject|iconv_mime_decode}
+                    <a href="{'devel_mail'|alias:sprintf('@mailid=%d', $key)}" class="displayMailLink">
+                        {$item.smtp.subject|iconv_mime_decode}
                     </a>
                 </td>
-                <td>{$item.smtp->From}</td>
-                <td>{$item.smtp->To}</td>
+                <td>{$item.smtp.from}</td>
+                <td>{$item.smtp.to}</td>
                 <td class="text-right">
-                    <a href="{'local_mail_delete'|alias:sprintf('@mailid=%d', $key)}" class="btn btn-danger btn-xs" title="{t}Delete mail{/t}">
+                    <a href="{'devel_mail_delete'|alias:sprintf('@mailid=%d', $key)}" class="btn btn-danger btn-xs deleteMailLink" title="{t}Delete mail{/t}">
                         {fa icon="trash"}
                     </a>
                 </td>

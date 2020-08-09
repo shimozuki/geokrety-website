@@ -22,7 +22,7 @@
 export MC_HOST_minio=http://${GK_MINIO_ACCESS_KEY}:${GK_MINIO_SECRET_KEY}@minio:9000
 
 
-# Statipic
+# Statpic
 mc mb "minio/${GK_BUCKET_NAME_STATPIC}"
 mc mb "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}"
 mc mb "minio/${GK_BUCKET_NAME_GEOKRETY_AVATARS}-thumbnails"
@@ -48,6 +48,10 @@ mc admin policy add minio pictures-processor-downloader_write minio/pictures-pro
 mc admin policy set minio pictures-processor-downloader_write user="${GK_MINIO_PICTURES_PROCESSOR_MINIO_ACCESS_KEY}"
 
 MINIO_RESTART=false
+
+echo "Wait for webserver to be up"
+for i in $(seq 60); do httping -sGc1 -o 200,302 http://localhost/ && echo OK && break ; sleep 1 ; done
+echo "webserver up"
 mc admin config get minio notify_webhook:picture-uploaded >/dev/null 2>&1 || { mc admin config set minio notify_webhook:picture-uploaded queue_limit="0" endpoint="http://website/s3/file-uploaded" queue_dir="" auth_token="${GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURE_UPLOADED}" && MINIO_RESTART=true; }
 mc admin config get minio notify_webhook:pictures-processor-downloader-uploaded >/dev/null 2>&1 || { mc admin config set minio notify_webhook:pictures-processor-downloader-uploaded queue_limit="0" endpoint="http://pictures-processor-downloader/file-uploaded" queue_dir="" auth_token="${GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURES_PROCESSOR_DOWNLOADER}" && MINIO_RESTART=true; }
 mc admin config get minio notify_webhook:pictures-processor-uploader-uploaded >/dev/null 2>&1 || { mc admin config set minio notify_webhook:pictures-processor-uploader-uploaded queue_limit="0" endpoint="http://pictures-processor-uploader/file-uploaded" queue_dir="" auth_token="${GK_MINIO_WEBHOOK_AUTH_TOKEN_PICTURES_PROCESSOR_UPLOADER}" && MINIO_RESTART=true; }

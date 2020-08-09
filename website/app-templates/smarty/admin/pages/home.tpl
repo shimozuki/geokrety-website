@@ -26,15 +26,6 @@
                 <div class="panel-body">
                     <ul>
                         <li>
-                            <a href="{'admin_rebuild_templates'|alias}">Rebuild all templates</a>
-                        </li>
-                        <li>
-                            <a href="{'admin_rebuild_translation'|alias}">Rebuild gettext files</a>
-                        </li>
-                        <li>
-                            <a href="{'admin_assets_clear'|alias}">Clear assets</a>
-                        </li>
-                        <li>
                             <a href="{'admin_s3_prune_pictures'|alias}">Prune never uploaded pictures</a>
                         </li>
                     </ul>

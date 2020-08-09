@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" id="geokretyFoundItPanel">
     <div class="panel-heading">
         {t}Found it? Log it!{/t}
     </div>

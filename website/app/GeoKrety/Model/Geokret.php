@@ -204,6 +204,16 @@ class Geokret extends Base {
         $geokret->save();
     }
 
+    public function __construct() {
+        parent::__construct();
+        $this->afterinsert(function ($self) {
+            \Event::instance()->emit('geokret.created', $self);
+        });
+        $this->afterupdate(function ($self) {
+            \Event::instance()->emit('geokret.updated', $self);
+        });
+    }
+
     public function jsonSerialize() {
         return [
             'id' => $this->id,
