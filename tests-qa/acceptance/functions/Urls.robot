@@ -21,6 +21,7 @@ ${PAGE_REGISTER_URL}        ${GK_URL}en/registration
 ${PAGE_SIGN_IN_URL}         ${GK_URL}en/login
 ${PAGE_SIGN_OUT_URL}        ${GK_URL}en/logout
 ${PAGE_NEWS_URL}            ${GK_URL}en/news
+${PAGE_MOVES_URL}           ${GK_URL}en/moves
 
 ${PAGE_USER_1_PROFILE_URL}     ${GK_URL}en/users/1
 ${PAGE_USER_2_PROFILE_URL}     ${GK_URL}en/users/2

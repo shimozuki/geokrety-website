@@ -2,7 +2,7 @@
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/PageRegistration.robot
 Resource        ../vars/users.resource
-Force Tags      CreateAccount
+Force Tags      Sign In
 
 *** Test Cases ***
 Seed an account

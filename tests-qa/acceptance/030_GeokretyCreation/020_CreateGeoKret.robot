@@ -1,10 +1,9 @@
 *** Settings ***
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
-Library         DependencyLibrary
 Resource        ../functions/PageGeoKretyCreate.robot
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
-Force Tags      CreateAccount
+Force Tags      Create GeoKrety
 
 *** Test Cases ***
 

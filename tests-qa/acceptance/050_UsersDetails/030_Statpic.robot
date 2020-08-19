@@ -4,6 +4,7 @@ Library         RobotEyes
 Resource        ../functions/PageGeoKretyCreate.robot
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
+Force Tags      Users Details
 Test Setup      Clear Database
 
 *** Test Cases ***

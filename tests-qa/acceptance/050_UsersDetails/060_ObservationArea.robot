@@ -3,6 +3,7 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         RobotEyes
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
+Force Tags      Users Details
 
 *** Variables ***
 &{COORDS_NEW_YORK}     lat=40.73700    lon=-73.92300

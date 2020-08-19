@@ -3,6 +3,7 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageEmailChange.robot
 Resource        ../vars/users.resource
+Force Tags      Users Details    Email
 Test Setup      Clear DB And Seed 1 users
 
 *** Variables ***

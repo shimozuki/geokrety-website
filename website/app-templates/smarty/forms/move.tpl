@@ -6,7 +6,7 @@
 
     <div class="panel-group" id="movePanelGroup" role="tablist" aria-multiselectable="true">
 
-        <div class="panel panel-default">
+        <div id="panelGeoKret" class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingGeokret" data-toggle="collapse" data-parent="#movePanelGroup" href="#collapseGeokret" aria-expanded="true" aria-controls="collapseGeokret">
                 {t}Identify GeoKret{/t}
                 <div class="pull-right" id="geokretHeader"></div>
@@ -22,7 +22,7 @@
                                 <div class="col-sm-10">
 
                                     <div class="input-group">
-                                        <input type="text" name="tracking_code" id="nr" value="{if !is_null($move->geokret)}{$move->geokret->tracking_code}{/if}" minlength="{GK_SITE_TRACKING_CODE_LENGTH}" {if !$f3->get('SESSION.CURRENT_USER')}maxlength="6"{/if} required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input focusout" data-parsley-validation-threshold="{GK_SITE_TRACKING_CODE_LENGTH -1}" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" data-parsley-remote-options='{ "type": "POST" }' />
+                                        <input type="text" name="tracking_code" id="nr" value="{if !is_null($move->geokret)}{$move->geokret->tracking_code}{/if}" minlength="{GK_SITE_TRACKING_CODE_LENGTH}" {if !$f3->get('SESSION.CURRENT_USER')}maxlength="6"{/if} required class="form-control" placeholder="eg. DQ9H4B" aria-describedby="helpBlockTrackingCode" data-parsley-trigger="input" data-parsley-validation-threshold="{GK_SITE_TRACKING_CODE_LENGTH -1}" data-parsley-remote data-parsley-remote-validator="checkNr" data-parsley-errors-messages-disabled style="text-transform:uppercase" data-parsley-group="trackingCode" data-parsley-remote-options='{ "type": "POST" }' />
                                         <span class="input-group-btn">
                                             {if $f3->get('SESSION.CURRENT_USER')}
                                             <button class="btn btn-default" type="button" id="nrInventorySelectButton" title="{t}Select GeoKrety from inventory{/t}" data-toggle="modal" data-target="#modal" data-type="select-from-inventory">{fa icon="briefcase"}</button>
@@ -30,7 +30,7 @@
                                             <button class="btn btn-default" type="button" id="nrSearchButton" title="{t}Verify tracking code{/t}">{fa icon="search"}</button>
                                         </span>
                                     </div>
-                                    <span id="helpBlockTrackingCode" class="help-block tooltip_large" data-toggle="tooltip" title="<img src='{GK_CDN_IMAGES_URL}/labels/screenshots/label-screenshot.svg' style='width:100%' />" data-html="true">{t escape=no count={GK_SITE_TRACKING_CODE_LENGTH}}%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>{/t}</span>
+                                    <p id="helpBlockTrackingCode" class="help-block tooltip_large" data-toggle="tooltip" title="<img src='{GK_CDN_IMAGES_URL}/labels/screenshots/label-screenshot.svg' style='width:100%' />" data-html="true">{t escape=no count={GK_SITE_TRACKING_CODE_LENGTH}}%1 characters from <em>GeoKret label</em>. <u>Do not use the code starting with 'GK' here</u>{/t}</p>
                                 </div>
                             </div>
                         </div>

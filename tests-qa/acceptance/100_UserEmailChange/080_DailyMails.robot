@@ -4,6 +4,7 @@ Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageEmailChange.robot
 Resource        ../functions/PageRegistration.robot
 Resource        ../vars/users.resource
+Force Tags      Users Details    Email
 Test Setup      Clear Database
 
 *** Test Cases ***

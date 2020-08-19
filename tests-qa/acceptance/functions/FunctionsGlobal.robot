@@ -80,7 +80,7 @@ Global TearDown
 
 !Open GeoKrety Browser
     [Arguments]    ${browser}
-    Run Keyword If    '${BS_ENABLED}' != 'false'    !Open GeoKrety BrowserStack    ${browser}
+    Run Keyword If    "${BS_ENABLED}" != "false"    !Open GeoKrety BrowserStack    ${browser}
     ...    ELSE       !Open GeoKrety Browser Local    ${browser}
     # Maximize Browser Window
     Set Window Size             1280    1024
@@ -112,7 +112,7 @@ Page WaitForPageElement
 
 Click Link With Text
     [Arguments]    ${text}
-    Click Link                     //a[contains(text(),'${text}')]
+    Click Link                     //a[contains(text(),"${text}")]
 
 Textfield Should Not Contain
     [Arguments]    ${locator}    ${not_expected}
@@ -213,24 +213,40 @@ Clear DB And Seed ${count} users
 
 Input validation has success
     [Arguments]  ${element}
-    Wait until page contains element    ${element}/ancestor::div[contains(@class, "form-group") and contains(@class, 'has-success')]   timeout=2
+    Wait until page contains element    ${element}/ancestor::div[contains(@class, "form-group") and contains(@class, "has-success")]   timeout=2
 
 Input validation has error
     [Arguments]  ${element}
-    Wait until page contains element    ${element}/ancestor::div[contains(@class, "form-group") and contains(@class, 'has-error')]   timeout=2
+    Wait until page contains element    ${element}/ancestor::div[contains(@class, "form-group") and contains(@class, "has-error")]   timeout=2
 
 Input validation has error help
     [Arguments]  ${element}    ${message}
-    Wait Until Element Is Visible    ${element}/parent::div/span[contains(@class,"help-block")][1]    timeout=2
-    Element Should Contain           ${element}/parent::div/span[contains(@class,"help-block")][1]    ${message}
+    Wait Until Element Is Visible    //span[contains(@class, "help-block") and parent::div[.${element}]]    timeout=2
+    Element Should Contain           //span[contains(@class, "help-block") and parent::div[.${element}]]    ${message}
+
+
 
 Element should have class
     [Arguments]  ${element}  ${className}
-    Wait until page contains element    ${element}[contains(@class, '${className}')]
+    Wait until page contains element    ${element}[contains(@class, "${className}")]
+
+Pannel validation has success
+    [Arguments]  ${element}
+    Wait until page contains element    ${element}\[contains(@class, "panel-success")]    timeout=2
+    # Wait until page contains element    ${element}/ancestor::div[contains(@class, "panel") and contains(@class, "panel-success")]    timeout=2
+
+Pannel validation has error
+    [Arguments]  ${element}
+    Wait until page contains element    ${element}\[contains(@class, "panel-danger")]    timeout=2
+    # Wait until page contains element    ${element}/ancestor::div[contains(@class, "panel") and contains(@class, "panel-danger")]    timeout=2
+
+Panel Is Collapsed
+    [Arguments]  ${element}
+    Page Should Contain Element         ${element}/div[contains(@class, "panel-heading") and contains(@class, "collapsed")]
 
 Flash message shown
     [Arguments]  ${message}
-    Wait until page contains element    //div[contains(@class, "flash-message") and text()[contains(., '${message}')]]
+    Wait until page contains element    //div[contains(@class, "flash-message") and text()[contains(., "${message}")]]
 
 Check Image
     [Arguments]    ${element}    ${name}=img1
@@ -264,3 +280,7 @@ Element Count Should Be
     [Arguments]    ${element}    ${expect}
     ${count} = 	Get Element Count 	        ${element}
     Should Be Equal As Integers             ${count}    ${expect}
+
+Wait For Text To Not Appear
+    [Arguments]    ${expect}    ${timeout}=1
+    Run Keyword And Expect Error    not seen    Wait Until Page Contains    ${expect}    timeout=${timeout}    error=not seen

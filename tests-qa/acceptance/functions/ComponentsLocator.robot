@@ -237,8 +237,23 @@ ${USER_EMAIL_VALIDATION_REFUSE_BUTTON}          //*[@id="emailChangeRefuseButton
 ${USER_EMAIL_VALIDATION_ACCEPT_BUTTON}          //*[@id="emailChangeAcceptButton"]
 ${USER_EMAIL_VALIDATION_DISMISS_BUTTON}         //*[@id="emailChangeDismissButton"]
 
+################
+# USER EMAIL PREFERENCES
+################
 
+${MOVE_TRACKING_CODE_PANEL}                     //*[@id="panelGeoKret"]
+${MOVE_TRACKING_CODE_PANEL_HEADER}              //*[@id="headingGeokret"]
+${MOVE_TRACKING_CODE_PANEL_HEADER_TEXT}         //*[@id="geokretHeader"]
+${MOVE_TRACKING_CODE_INPUT}                     //*[@id="nr"]
+${MOVE_TRACKING_CODE_CHECK_BUTTON}              //*[@id="nrSearchButton"]
+${MOVE_TRACKING_CODE_INVENTORY_BUTTON}          //*[@id="nrInventorySelectButton"]
+${MOVE_TRACKING_CODE_RESULT_LIST}               //*[@id="nrResult"]
+${MOVE_TRACKING_CODE_FIRST_RESULT_ITEM}         //ul[@id="nrResult"]/li
+${MOVE_TRACKING_CODE_NEXT_BUTTON}               //*[@id="nrNextButton"]
 
+${MOVE_INVENTORY_TABLE}                         //*[@id="geokretyListTable"]
+${MOVE_INVENTORY_SELECT_BUTTON}                 //*[@id="modalInventorySelectButton"]
+${MOVE_INVENTORY_SELECT_BUTTON_BADGE}           ${MOVE_INVENTORY_SELECT_BUTTON}/span[@class="badge"]
 
 
 

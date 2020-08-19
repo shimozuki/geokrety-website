@@ -2,6 +2,7 @@
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
+Force Tags      Users Details    Language
 
 *** Test Cases ***
 
