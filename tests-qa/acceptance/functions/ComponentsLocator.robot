@@ -248,12 +248,17 @@ ${MOVE_TRACKING_CODE_INPUT}                     //*[@id="nr"]
 ${MOVE_TRACKING_CODE_CHECK_BUTTON}              //*[@id="nrSearchButton"]
 ${MOVE_TRACKING_CODE_INVENTORY_BUTTON}          //*[@id="nrInventorySelectButton"]
 ${MOVE_TRACKING_CODE_RESULT_LIST}               //*[@id="nrResult"]
-${MOVE_TRACKING_CODE_FIRST_RESULT_ITEM}         //ul[@id="nrResult"]/li
+${MOVE_TRACKING_CODE_RESULTS_ITEMS}             //*[@id="nrResult"]/li
+${MOVE_TRACKING_CODE_FIRST_RESULT_ITEM}         //*[@id="nrResult"]/li[1]
+${MOVE_TRACKING_CODE_SECOND_RESULT_ITEM}        //*[@id="nrResult"]/li[2]
 ${MOVE_TRACKING_CODE_NEXT_BUTTON}               //*[@id="nrNextButton"]
 
 ${MOVE_INVENTORY_TABLE}                         //*[@id="geokretyListTable"]
 ${MOVE_INVENTORY_SELECT_BUTTON}                 //*[@id="modalInventorySelectButton"]
 ${MOVE_INVENTORY_SELECT_BUTTON_BADGE}           ${MOVE_INVENTORY_SELECT_BUTTON}/span[@class="badge"]
+${MOVE_INVENTORY_SELECT_ALL_CHECKBOX}           //*[@id="geokretySelectAll"]
+${MOVE_INVENTORY_ALL_ITEMS_CHECKBOX}            ${MOVE_INVENTORY_TABLE}//tr//input[@type="checkbox"]
+${MOVE_INVENTORY_FILTER_INPUT}                  //*[@id="gk-filter"]
 
 
 

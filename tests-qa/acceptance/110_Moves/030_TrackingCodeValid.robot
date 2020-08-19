@@ -1,5 +1,6 @@
 *** Settings ***
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
+Library         Dialogs
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
@@ -30,11 +31,37 @@ Fill Tracking Code With Reference Number
     GK001
     GK0001
 
+Fill Multiple Tracking Code Is Not Possible For Anonymous
+    Go To Url                               ${PAGE_MOVES_URL}
+    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc},${GEOKRETY_2.tc}
+    Click Button                            ${MOVE_TRACKING_CODE_CHECK_BUTTON}
+    Element Count Should Be                 ${MOVE_TRACKING_CODE_RESULTS_ITEMS}         1
+    Wait Until Page Contains Element        ${MOVE_TRACKING_CODE_FIRST_RESULT_ITEM}
+    Element Should Contain                  ${MOVE_TRACKING_CODE_FIRST_RESULT_ITEM}     ${GEOKRETY_1.name} by ${USER_1.name}
+
+# TODO There is a limit
+Fill Multiple Tracking Code Should Load GeoKrety
+    Sign In ${USER_1.name} Fast
+    Go To Url                               ${PAGE_MOVES_URL}
+    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc},${GEOKRETY_2.tc}
+    Click Button                            ${MOVE_TRACKING_CODE_CHECK_BUTTON}
+    Wait Until Keyword Succeeds    5x    200ms    Element Count Should Be    ${MOVE_TRACKING_CODE_RESULTS_ITEMS}    2
+
+    Wait Until Page Contains Element        ${MOVE_TRACKING_CODE_FIRST_RESULT_ITEM}
+    Element Should Contain                  ${MOVE_TRACKING_CODE_FIRST_RESULT_ITEM}     ${GEOKRETY_1.name} by ${USER_1.name}
+
+    Wait Until Page Contains Element        ${MOVE_TRACKING_CODE_SECOND_RESULT_ITEM}
+    Element Should Contain                  ${MOVE_TRACKING_CODE_SECOND_RESULT_ITEM}    ${GEOKRETY_2.name} by ${USER_1.name}
+
 GeoKret Reference Should Be Displayed In Panel Heading
     Go To Url                               ${PAGE_MOVES_URL}
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
     Click Button                            ${MOVE_TRACKING_CODE_CHECK_BUTTON}
     Element Text Should Be                  ${MOVE_TRACKING_CODE_PANEL_HEADER_TEXT}     ${GEOKRETY_1.ref}
+
+    Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc},${GEOKRETY_2.tc}
+    Click Button                            ${MOVE_TRACKING_CODE_CHECK_BUTTON}
+    Wait Until Keyword Succeeds    5x    200ms    Element Text Should Be    ${MOVE_TRACKING_CODE_PANEL_HEADER_TEXT}    ${GEOKRETY_1.ref} ${GEOKRETY_2.ref}
 
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${TC_INVALID}
     Click Button                            ${MOVE_TRACKING_CODE_CHECK_BUTTON}
@@ -44,7 +71,7 @@ GeoKret Reference Should Be Displayed In Panel Heading
 
 Seed
     Clear DB And Seed 1 users
-    Seed 1 geokrety owned by 1
+    Seed 2 geokrety owned by 1
     Sign Out Fast
 
 Fill Tracking Code With Reference Number

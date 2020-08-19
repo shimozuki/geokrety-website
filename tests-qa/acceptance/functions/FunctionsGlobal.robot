@@ -268,6 +268,9 @@ Wait Until Modal
     # Wait Until Page Contains Element        ${MODAL_DIALOG_DISMISS_BUTTON}
     Element Should Contain                  ${MODAL_DIALOG_TITLE}               ${title}
 
+Wait Until Modal Close
+    Wait Until Element Is Not Visible       ${MODAL_DIALOG}
+
 Wait Until Panel
     [Arguments]    ${title}
     Wait Until Page Contains Element        ${MODAL_PANEL}
