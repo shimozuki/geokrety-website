@@ -2,6 +2,7 @@
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         DependencyLibrary
 Resource        ../functions/PageRegistration.robot
+Suite Setup     Clear Database
 Force Tags      CreateAccount
 
 *** Test Cases ***

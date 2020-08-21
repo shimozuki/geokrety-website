@@ -36,14 +36,14 @@ Next Trigger Validation - Valid
     Go To Url                               ${PAGE_MOVES_URL}
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc}
     Click Button                            ${MOVE_TRACKING_CODE_NEXT_BUTTON}
-    Pannel validation has success           ${MOVE_TRACKING_CODE_PANEL}
+    Panel validation has success            ${MOVE_TRACKING_CODE_PANEL}
     Panel Is Collapsed                      ${MOVE_TRACKING_CODE_PANEL}
 
 Next Trigger Validation - Invalid
     Go To Url                               ${PAGE_MOVES_URL}
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ABCDEF
     Click Button                            ${MOVE_TRACKING_CODE_NEXT_BUTTON}
-    Pannel validation has error             ${MOVE_TRACKING_CODE_PANEL}
+    Panel validation has error              ${MOVE_TRACKING_CODE_PANEL}
     Panel Is Collapsed                      ${MOVE_TRACKING_CODE_PANEL}
 
 *** Keywords ***
@@ -58,4 +58,4 @@ Button Trigger Validation With Wrong TC
     Go To Url                               ${PAGE_MOVES_URL}
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${tc}
     Click Button                            ${MOVE_TRACKING_CODE_CHECK_BUTTON}
-    Pannel validation has error             ${MOVE_TRACKING_CODE_PANEL}
+    Panel validation has error              ${MOVE_TRACKING_CODE_PANEL}

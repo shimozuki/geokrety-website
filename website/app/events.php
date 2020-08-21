@@ -46,11 +46,15 @@ $events->on('picture.deleted', function (\GeoKrety\Model\Picture $picture) { aud
 $events->on('picture.avatar.defined', function (\GeoKrety\Model\Picture $picture) { audit('picture.avatar.defined', $picture); });
 $events->on('contact.new', function (\GeoKrety\Model\Mail $mail) { audit('contact.new', $mail); });
 $events->on('geokret.created', function (\GeoKrety\Model\Geokret $geokret) {
-    \GeoKrety\Service\UserBanner::generate($geokret->owner);
+    if (!is_null($geokret->owner)) {
+        \GeoKrety\Service\UserBanner::generate($geokret->owner);
+    }
     audit('geokret.created', $geokret);
 });  // context => s3 response
 $events->on('geokret.updated', function (\GeoKrety\Model\Geokret $geokret) {
-    \GeoKrety\Service\UserBanner::generate($geokret->owner);
+    if (!is_null($geokret->owner) && $geokret->changed('owner')) {
+        \GeoKrety\Service\UserBanner::generate($geokret->owner);
+    }
     audit('geokret.updated', $geokret);
 });
 $events->on('geokret.owner_code.created', function (\GeoKrety\Model\OwnerCode $ownerCode) {

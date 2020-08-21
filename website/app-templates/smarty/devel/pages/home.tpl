@@ -24,6 +24,12 @@
                         <li>
                             <a href="{'devel_seed_geokrety'|alias:sprintf('@count=%d', 1)}">Seed "1" GeoKret</a>
                         </li>
+                        <li>
+                            <a href="{'devel_seed_waypoint_oc'|alias:sprintf('@count=%d', 1)}">Seed "1" Waypoint OC</a>
+                        </li>
+                        <li>
+                            <a href="{'devel_seed_waypoint_gc'|alias:sprintf('@count=%d', 1)}">Seed "1" Waypoint GC</a>
+                        </li>
                     </ul>
                 </div>
             </div>

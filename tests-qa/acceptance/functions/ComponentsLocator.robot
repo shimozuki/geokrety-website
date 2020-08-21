@@ -241,7 +241,7 @@ ${USER_EMAIL_VALIDATION_DISMISS_BUTTON}         //*[@id="emailChangeDismissButto
 # USER EMAIL PREFERENCES
 ################
 
-${MOVE_TRACKING_CODE_PANEL}                     //*[@id="panelGeoKret"]
+${MOVE_TRACKING_CODE_PANEL}                     //*[@id="panelMoveGeoKret"]
 ${MOVE_TRACKING_CODE_PANEL_HEADER}              //*[@id="headingGeokret"]
 ${MOVE_TRACKING_CODE_PANEL_HEADER_TEXT}         //*[@id="geokretHeader"]
 ${MOVE_TRACKING_CODE_INPUT}                     //*[@id="nr"]
@@ -260,6 +260,41 @@ ${MOVE_INVENTORY_SELECT_ALL_CHECKBOX}           //*[@id="geokretySelectAll"]
 ${MOVE_INVENTORY_ALL_ITEMS_CHECKBOX}            ${MOVE_INVENTORY_TABLE}//tr//input[@type="checkbox"]
 ${MOVE_INVENTORY_FILTER_INPUT}                  //*[@id="gk-filter"]
 
+
+${MOVE_LOG_TYPE_PANEL}                          //*[@id="panelMoveLogType"]
+${MOVE_LOG_TYPE_PANEL_HEADER}                   //*[@id="headingLogtype"]
+${MOVE_LOG_TYPE_PANEL_HEADER_TEXT}              //*[@id="logTypeHeader"]
+${MOVE_LOG_TYPE_RADIO_GROUP}                    logtype
+${MOVE_LOG_TYPE_DROPPED_RADIO}                 //*[@id="logType0"]
+${MOVE_LOG_TYPE_GRABBED_RADIO}                 //*[@id="logType1"]
+${MOVE_LOG_TYPE_MEET_RADIO}                    //*[@id="logType3"]
+${MOVE_LOG_TYPE_DIPPED_RADIO}                  //*[@id="logType5"]
+${MOVE_LOG_TYPE_COMMENT_RADIO}                 //*[@id="logType2"]
+${MOVE_LOG_TYPE_ARCHIVE_RADIO}                 //*[@id="logType4"]
+${MOVE_LOG_TYPE_NEXT_BUTTON}                    //*[@id="logtypeNextButton"]
+
+
+${MOVE_NEW_LOCATION_PANEL}                      //*[@id="panelLocation"]
+${MOVE_NEW_LOCATION_PANEL_HEADER}               //*[@id="headingLocation"]
+${MOVE_NEW_LOCATION_PANEL_HEADER_TEXT}          //*[@id="locationHeader"]
+${MOVE_NEW_LOCATION_WAYPOINT_INPUT}             //*[@id="wpt"]
+${MOVE_NEW_LOCATION_OC_BUTTON}                  //*[@id="wptSearchByNameButton"]
+${MOVE_NEW_LOCATION_SEARCH_BUTTON}              //*[@id="wptSearchButton"]
+${MOVE_NEW_LOCATION_NEXT_BUTTON}                //*[@id="locationNextButton"]
+
+${MOVE_NEW_LOCATION_OC_INPUT}                   //*[@id="findbyCacheNameInput"]
+
+${MOVE_NEW_LOCATION_MAP_PANEL}                  //*[@id="mapField"]
+${MOVE_NEW_LOCATION_MAP_PANEL_HEADER}           ${MOVE_NEW_LOCATION_MAP_PANEL}/div[contains(@class, "panel-heading")]
+${MOVE_NEW_LOCATION_MAP_COORDINATES_INPUT}      //*[@id="latlon"]
+${MOVE_NEW_LOCATION_MAP_COORDINATES_SEARCH_BUTTON}    //*[@id="coordinatesSearchButton"]
+${MOVE_NEW_LOCATION_MAP_COORDINATES_HELP_BUTTON}      //*[@id="geolocationButton"]
+${MOVE_NEW_LOCATION_MAP_MAP}                    //*[@id="mapid"]
+
+${MOVE_ADDITIONAL_DATA_PANEL}                   //*[@id="additionalDataPanel"]
+${MOVE_ADDITIONAL_DATA_PANEL_HEADER}            //*[@id="headingMessage"]
+${MOVE_ADDITIONAL_DATA_PANEL_HEADER_TEXT}       //*[@id="additionalDataHeader"]
+${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}           //*[@id="submitButton"]
 
 
 

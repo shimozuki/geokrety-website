@@ -4,6 +4,8 @@ ${PAGE_SEED_USER}           ${GK_URL}devel/db/users/seed
 ${PAGE_SEED_GEOKRETY}       ${GK_URL}devel/db/geokrety/seed
 ${PAGE_SEED_GEOKRETY_OWNED_BY_USER_1}       ${GK_URL}devel/db/users/1/geokrety/seed
 ${PAGE_SEED_GEOKRETY_OWNED_BY_USER_2}       ${GK_URL}devel/db/users/2/geokrety/seed
+${PAGE_SEED_WAYPOINT_OC}    ${GK_URL}devel/db/waypoint/oc
+${PAGE_SEED_WAYPOINT_GC}    ${GK_URL}devel/db/waypoint/gc
 
 # ${PAGE_LOGIN_USER}          ${GK_URL}devel/users/${username}/login
 

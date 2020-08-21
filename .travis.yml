@@ -54,7 +54,7 @@ jobs:
         # Launch Postgres
         - sudo mkdir /mnt/ramfs
         - sudo mount -t tmpfs -o size=2048m tmpfs /mnt/ramfs
-        - ${DOCKER_COMPOSE} pull -q postgres
+        - ${DOCKER_COMPOSE} pull postgres
         - ${DOCKER_COMPOSE} up -d --no-build postgres
         - timeout 60s bash -c "while ! pg_isready; do sleep 0.1; done"
 
@@ -81,7 +81,7 @@ jobs:
         - website/db/tests-srtm-import.sh
 
         # Other services
-        - ${DOCKER_COMPOSE} pull postgres cdn redis minio pictures-processor-downloader pictures-processor-uploader svg-to-png
+        - ${DOCKER_COMPOSE} pull cdn redis minio pictures-processor-downloader pictures-processor-uploader svg-to-png
         - ${DOCKER_COMPOSE} build website
         - ${DOCKER_COMPOSE} up -d --no-build
         - docker ps -a

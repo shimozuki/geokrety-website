@@ -31,7 +31,6 @@ Clear Database
 
 Global Setup
     !Open GeoKrety Browser  ${browser}    # which browser? the one that's the value of the variable
-    Clear Database
 
 Global TearDown
     Close Browser
@@ -207,6 +206,12 @@ Seed ${count} geokrety
 Seed ${count} geokrety owned by ${userid}
     Go To Url                           ${GK_URL}devel/db/users/${userid}/geokrety/seed/${count}
 
+Seed ${count} waypoints OC
+    Go To Url                           ${PAGE_SEED_WAYPOINT_OC}/${count}
+
+Seed ${count} waypoints GC
+    Go To Url                           ${PAGE_SEED_WAYPOINT_GC}/${count}
+
 Clear DB And Seed ${count} users
     Clear Database
     Go To Url                           ${PAGE_SEED_USER}/${count}
@@ -230,12 +235,12 @@ Element should have class
     [Arguments]  ${element}  ${className}
     Wait until page contains element    ${element}[contains(@class, "${className}")]
 
-Pannel validation has success
+Panel validation has success
     [Arguments]  ${element}
     Wait until page contains element    ${element}\[contains(@class, "panel-success")]    timeout=2
     # Wait until page contains element    ${element}/ancestor::div[contains(@class, "panel") and contains(@class, "panel-success")]    timeout=2
 
-Pannel validation has error
+Panel validation has error
     [Arguments]  ${element}
     Wait until page contains element    ${element}\[contains(@class, "panel-danger")]    timeout=2
     # Wait until page contains element    ${element}/ancestor::div[contains(@class, "panel") and contains(@class, "panel-danger")]    timeout=2
@@ -243,6 +248,13 @@ Pannel validation has error
 Panel Is Collapsed
     [Arguments]  ${element}
     Page Should Contain Element         ${element}/div[contains(@class, "panel-heading") and contains(@class, "collapsed")]
+
+Open Panel
+    [Arguments]                     ${element}
+    ${status}    ${value} =         Run Keyword And Ignore Error    Panel Is Collapsed    ${element}
+    Run Keyword If                  '${status}' == 'PASS'
+    ...                             Click Element                   ${element}/div[contains(@class, "panel-heading")]
+    Page Should Contain Element     ${element}/div[contains(@class, "panel-heading") and not(contains(@class, "collapsed"))]
 
 Flash message shown
     [Arguments]  ${message}

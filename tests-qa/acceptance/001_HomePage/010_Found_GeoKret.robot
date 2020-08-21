@@ -2,6 +2,7 @@
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/PageHome.robot
 Force Tags      Movement
+Suite Setup     Clear Database
 
 *** Variables ***
 ${TEST_GEOKRET_REF}     GK10BCD

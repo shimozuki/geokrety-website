@@ -4,7 +4,6 @@ Library         DependencyLibrary
 Resource        ../functions/PageRegistration.robot
 Resource        ../vars/users.resource
 Force Tags      CreateAccount
-# Test Teardown   Execute Manual Step    message
 
 *** Test Cases ***
 Create an account
