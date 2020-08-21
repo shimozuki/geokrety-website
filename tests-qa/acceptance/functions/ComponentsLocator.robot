@@ -135,7 +135,8 @@ ${GEOKRET_DETAILS_CREATED_ON_DATETIME_LABEL}    ${GEOKRET_DETAILS_DETAILS_PANEL}
 
 ${GEOKRET_DETAILS_MISSION}                      //*[@id="geokretyMissionPanel"]/div[@class="panel-body"]
 
-${GEOKRET_DETAILS_FOUND_IT_TRACKING_CODE}       //*[@id="geokretyFoundItPanel"]/div[@class="panel-body"]//*[@id="tracking_code"]
+${GEOKRET_DETAILS_FOUND_IT_TRACKING_CODE}       //*[@id="tracking_code"]
+${GEOKRET_DETAILS_FOUND_IT_BUTTON}              //*[@id="foundItLogItButton"]
 
 ################
 # USER PROFILE PAGE

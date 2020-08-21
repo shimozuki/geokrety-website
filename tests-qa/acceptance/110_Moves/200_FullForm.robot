@@ -7,7 +7,7 @@ Resource        ../vars/users.resource
 Resource        ../vars/waypoints.resource
 Resource        ../vars/geokrety.resource
 Force Tags      Moves    Location
-Suite Setup     Seed
+Test Setup     Seed
 
 *** Test Cases ***
 
@@ -23,7 +23,7 @@ Fill Form Naturally
     Click Button                            ${MOVE_LOG_TYPE_NEXT_BUTTON}
     Panel validation has success            ${MOVE_LOG_TYPE_PANEL}
 
-    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         ${WPT_GC_1.id}
+    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         ${WPT_OC_1.id}
     Click Button                            ${MOVE_NEW_LOCATION_NEXT_BUTTON}
     Panel validation has success            ${MOVE_NEW_LOCATION_PANEL}
 
@@ -32,6 +32,40 @@ Fill Form Naturally
     Panel validation has success            ${MOVE_ADDITIONAL_DATA_PANEL}
     Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
 
+    Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
+
+Found It Log It From Home Page
+    Sign Out Fast
+    Go To Url                               ${PAGE_HOME_URL}
+
+    Input Text                              ${GEOKRET_DETAILS_FOUND_IT_TRACKING_CODE}   ${GEOKRETY_1.tc}
+    Click Button                            ${HOME_FOUND_GK_TRACKING_CODE_BUTTON}
+    Location Should Be                      ${PAGE_MOVES_URL}?tracking_code=${GEOKRETY_1.tc}
+
+    Click Button                            ${MOVE_TRACKING_CODE_NEXT_BUTTON}
+    Click Move                              ${MOVE_LOG_TYPE_GRABBED_RADIO}
+    Click Button                            ${MOVE_LOG_TYPE_NEXT_BUTTON}
+    Input Text                              ${MOVE_ADDITIONAL_DATA_USERNAME_INPUT}      ${USER_1.name}
+    Input Inscrybmde                        \#comment                                   TEST
+    Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
+    Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
+
+Found It Log It From GeoKret Page
+    Sign Out Fast
+    Go To Url                               ${PAGE_GEOKRETY_1_DETAILS_URL}
+
+    Input Text                              ${GEOKRET_DETAILS_FOUND_IT_TRACKING_CODE}   ${GEOKRETY_1.tc}
+    Click Button                            ${GEOKRET_DETAILS_FOUND_IT_BUTTON}
+    Location Should Be                      ${PAGE_MOVES_URL}?tracking_code=${GEOKRETY_1.tc}
+
+    Click Button                            ${MOVE_TRACKING_CODE_NEXT_BUTTON}
+    Click Move                              ${MOVE_LOG_TYPE_DIPPED_RADIO}
+    Click Button                            ${MOVE_LOG_TYPE_NEXT_BUTTON}
+    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         ${WPT_OC_1.id}
+    Click Button                            ${MOVE_NEW_LOCATION_NEXT_BUTTON}
+    Input Text                              ${MOVE_ADDITIONAL_DATA_USERNAME_INPUT}      ${USER_1.name}
+    Input Inscrybmde                        \#comment                                   TEST
+    Click Button                            ${MOVE_ADDITIONAL_DATA_SUBMIT_BUTTON}
     Wait Until Location Is                  ${PAGE_GEOKRETY_1_DETAILS_URL}/page/1\#log1
 
 
@@ -49,7 +83,6 @@ Seed
     Clear DB And Seed 1 users
     Seed 2 geokrety owned by 1
     Seed 3 waypoints OC
-    Seed 1 waypoints GC
 
 Set DateTime
     [Arguments]    ${datetime}=2020-08-12 07:30:00    ${timezone}=+00:00

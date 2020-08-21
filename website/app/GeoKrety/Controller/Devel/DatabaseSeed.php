@@ -100,7 +100,7 @@ class DatabaseSeed extends Base {
             $wpt = new WaypointGC();
             $wpt->waypoint = 'GC%04d';
             $wpt->lat = 43.00000;
-            $wpt->lon = 7.00000 + ($i - 1)/100;
+            $wpt->lon = 7.00000 + ($i - 1) / 100;
             if ($wpt->validate()) {
                 $wpt->save();
                 $wpt->waypoint = sprintf('GC%04d', $wpt->id);
