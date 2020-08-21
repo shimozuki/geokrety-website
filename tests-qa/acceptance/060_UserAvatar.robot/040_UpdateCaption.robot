@@ -5,12 +5,9 @@ Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/Images.robot
 Resource        ../vars/users.resource
 Force Tags      Users Details    Pictures
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear Database
-    Seed 1 users
 
 Define Picture Caption
     Sign In ${USER_1.name} Fast
@@ -39,3 +36,9 @@ Define Picture Caption
     Capture Element                         ${USER_PROFILE_FIRST_IMAGE}             name=img3
 
     Compare Images
+
+*** Keywords
+
+Seed
+    Clear Database
+    Seed 1 users

@@ -5,13 +5,9 @@ Resource        ../functions/PageGeoKretyCreate.robot
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
 Force Tags      Create GeoKrety
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear Database
-    Seed 1 users
-    Sign In ${USER_1.name} Fast
 
 Text valid
     [Template]          GeoKret is created
@@ -28,6 +24,12 @@ Text valid
 
 
 *** Keywords ***
+
+Seed
+    Clear Database
+    Seed 1 users
+    Sign In ${USER_1.name} Fast
+
 GeoKret is created
     [Arguments]    ${mission}    ${expected}=${mission}
     Go To Url                           ${PAGE_GEOKRETY_CREATE_URL}

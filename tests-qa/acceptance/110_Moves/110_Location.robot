@@ -13,6 +13,8 @@ Form Initial Status
     Go To Url                               ${PAGE_MOVES_URL}
     Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
     Element Should Be Visible               ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}
+    Element Should Be Visible               ${MOVE_NEW_LOCATION_OC_BUTTON}
+    Element Should Be Visible               ${MOVE_NEW_LOCATION_SEARCH_BUTTON}
     Element Should Not Be Visible           ${MOVE_NEW_LOCATION_OC_INPUT}
     Element Should Not Be Visible           ${MOVE_NEW_LOCATION_MAP_PANEL}
 
@@ -76,6 +78,7 @@ Fill Coordinates With Invalid Coordinates
 
 Fill Coordinates Show Map Centered
     Fill Coordinates                        ${INVALID_GC_WPT}                   ${WPT_GC_1.coords}
+    Wait Until Page Contains Element        //*[@id="mapid" and @data-map-loaded="true"]    timeout=30
     Check Image                             ${MOVE_NEW_LOCATION_MAP_MAP}
 
 No Selection Should Show Error
@@ -84,12 +87,82 @@ No Selection Should Show Error
     Click Button                            ${MOVE_NEW_LOCATION_NEXT_BUTTON}
     Panel validation has error              ${MOVE_NEW_LOCATION_PANEL}
 
-# TODO
+Start Typing A GC Waypoint Remove The OC Button
+    [Tags]    TODO
+    Go To Url                               ${PAGE_MOVES_URL}
+    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
+    Element Should Be Visible               ${MOVE_NEW_LOCATION_OC_BUTTON}
+    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         GC
+    Simulate Event                          ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         blur
+    Element Should Not Be Visible           ${MOVE_NEW_LOCATION_OC_BUTTON}
+
 Open OC Search Field
     Go To Url                               ${PAGE_MOVES_URL}
     Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
+    Element Should Not Be Visible           ${MOVE_NEW_LOCATION_OC_INPUT}
     Click Button                            ${MOVE_NEW_LOCATION_OC_BUTTON}
-    Input Text                              ${MOVE_NEW_LOCATION_OC_INPUT}       ${WPT_OC_1.name}
+    Element Should Be Visible               ${MOVE_NEW_LOCATION_OC_INPUT}
+
+OC Autocomplete Displayed After 4th Character
+    Go To Url                               ${PAGE_MOVES_URL}
+    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
+    Click Button                            ${MOVE_NEW_LOCATION_OC_BUTTON}
+    Input Text                              ${MOVE_NEW_LOCATION_OC_INPUT}               Way
+    Run Keyword And Expect Error    missing    Wait Until Page Contains Element    ${MOVE_NEW_LOCATION_OC_INPUT_TYPEAHEAD}    timeout=0.5    error=missing
+
+    Input Text                              ${MOVE_NEW_LOCATION_OC_INPUT}               Wayp
+    Wait Until Page Contains Element        ${MOVE_NEW_LOCATION_OC_INPUT_TYPEAHEAD}
+    Element Should Be Visible               ${MOVE_NEW_LOCATION_OC_INPUT_TYPEAHEAD}
+
+OC Autocomplete Responses
+    Go To Url                               ${PAGE_MOVES_URL}
+    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
+    Click Button                            ${MOVE_NEW_LOCATION_OC_BUTTON}
+    Input Text                              ${MOVE_NEW_LOCATION_OC_INPUT}                   Wayp
+    Wait Until Page Contains Element        ${MOVE_NEW_LOCATION_OC_INPUT_TYPEAHEAD}
+    Element Count Should Be                 ${MOVE_NEW_LOCATION_OC_INPUT_TYPEAHEAD_ITEMS}   3
+
+OC Autocomplete Responses Exact Match
+    Go To Url                               ${PAGE_MOVES_URL}
+    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
+    Click Button                            ${MOVE_NEW_LOCATION_OC_BUTTON}
+    Input Text                              ${MOVE_NEW_LOCATION_OC_INPUT}                   ${WPT_OC_1.name}
+    Wait Until Page Contains Element        ${MOVE_NEW_LOCATION_OC_INPUT_TYPEAHEAD}
+    Element Count Should Be                 ${MOVE_NEW_LOCATION_OC_INPUT_TYPEAHEAD_ITEMS}   1
+
+Select Cache Name From OC Autocomplete Fill Waypoint
+    Go To Url                               ${PAGE_MOVES_URL}
+    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
+    Click Button                            ${MOVE_NEW_LOCATION_OC_BUTTON}
+    Input Text                              ${MOVE_NEW_LOCATION_OC_INPUT}                   ${WPT_OC_1.name}
+    Wait Until Page Contains Element        ${MOVE_NEW_LOCATION_OC_INPUT_TYPEAHEAD}
+    Click Element                           ${MOVE_NEW_LOCATION_OC_INPUT_TYPEAHEAD_ITEMS}\[1]
+    Textfield Value Should Be               ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}             ${WPT_OC_1.id}
+    Panel validation has success            ${MOVE_NEW_LOCATION_PANEL}
+    Element Text Should Be                  ${MOVE_NEW_LOCATION_PANEL_HEADER_TEXT}          ${WPT_OC_1.id}
+    Textfield Value Should Be               ${MOVE_NEW_LOCATION_MAP_COORDINATES_INPUT}      ${WPT_OC_1.coords}
+    Wait Until Page Contains Element        //*[@id="mapid" and @data-map-loaded="true"]    timeout=30
+    Check Image                             ${MOVE_NEW_LOCATION_MAP_MAP}
+
+Click Next With Known Waypoint Raise Validation Success
+    Go To Url                               ${PAGE_MOVES_URL}
+    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
+    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}      ${WPT_OC_1.id}
+    Click Button                            ${MOVE_NEW_LOCATION_NEXT_BUTTON}
+    Panel validation has success            ${MOVE_NEW_LOCATION_PANEL}
+
+Click Next With Empty Waypoint Raise Validation Error
+    Go To Url                               ${PAGE_MOVES_URL}
+    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
+    Click Button                            ${MOVE_NEW_LOCATION_NEXT_BUTTON}
+    Panel validation has error              ${MOVE_NEW_LOCATION_PANEL}
+
+Click Next With UnKnown GC Waypoint Raise Validation Error
+    Go To Url                               ${PAGE_MOVES_URL}
+    Open Panel                              ${MOVE_NEW_LOCATION_PANEL}
+    Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}      ${INVALID_GC_WPT}
+    Click Button                            ${MOVE_NEW_LOCATION_NEXT_BUTTON}
+    Panel validation has error              ${MOVE_NEW_LOCATION_PANEL}
 
 *** Keywords ***
 

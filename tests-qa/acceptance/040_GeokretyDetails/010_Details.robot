@@ -5,14 +5,9 @@ Resource        ../functions/PageGeoKretyCreate.robot
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
 Force Tags      GeoKrety Details
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear Database
-    Seed 2 users
-    Seed 1 geokrety owned by 1
-    Seed 1 geokrety owned by 2
 
 Public Information Visible - anonymous
     Has Public Information Visible - all geokrety
@@ -37,6 +32,12 @@ Private Information Not Visible - authenticated - not owned
 
 
 *** Keywords ***
+
+Seed
+    Clear Database
+    Seed 2 users
+    Seed 1 geokrety owned by 1
+    Seed 1 geokrety owned by 2
 
 Has Public Information Visible - all geokrety
     Has Public Information              ${PAGE_GEOKRETY_1_DETAILS_URL}      ${GEOKRETY_1}      ${USER_1}

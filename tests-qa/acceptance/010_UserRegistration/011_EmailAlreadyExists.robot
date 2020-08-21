@@ -4,15 +4,11 @@ Library         DependencyLibrary
 Resource        ../functions/PageRegistration.robot
 Resource        ../vars/users.resource
 Force Tags      CreateAccount
+Suite Setup     Seed
 
 *** Test Cases ***
-Seed an account
-    [Documentation]         Seed an account
-    Clear Database
-    Seed 1 users
 
 Email is already taken
-    Depends on test         Seed an account
     [Documentation]         Prevent usage of already used email addresses
     Go To Url               ${PAGE_REGISTER_URL}
     Fill Registration Form    ${USER_2.name}    ${USER_1.email}
@@ -34,3 +30,10 @@ Form content keeped
     Should Be Equal As Strings    ${LANGUAGE}    ${USER_2.lang}
     Checkbox Should Be Selected    ${REGISTRATION_DAILY_MAIL_CHECKBOX}
     Checkbox Should Be Selected    ${REGISTRATION_TERMS_OF_USE_CHECKBOX}
+
+*** Keywords ***
+
+Seed
+    [Documentation]         Seed an account
+    Clear Database
+    Seed 1 users

@@ -4,15 +4,12 @@ Library         RobotEyes
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
 Force Tags      Users Details
+Suite Setup     Seed
 
 *** Variables ***
 &{COORDS_NEW_YORK}     lat=40.73700    lon=-73.92300
 
 *** Test Cases ***
-
-Seed
-    Clear Database
-    Seed 2 users
 
 Anonymous users are refused
     Sign Out Fast
@@ -101,6 +98,10 @@ Save Observation Area Preferences
     Compare Images
 
 *** Keywords ***
+
+Seed
+    Clear Database
+    Seed 2 users
 
 Check valid coordinates
     [Arguments]    ${input}    ${expect}

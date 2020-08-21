@@ -3,12 +3,9 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/PageRegistration.robot
 Resource        ../vars/users.resource
 Force Tags      CreateAccount
+Suite Setup     Seed
 
 *** Test Cases ***
-Seed an account
-    [Documentation]         Seed an account
-    Clear Database
-    Seed 1 users
 
 Check username
     [Template]    Fill username
@@ -19,6 +16,12 @@ Check username
     ${USER_1.email}    Sorry, but username "${USER_1.email}" is already used.
 
 *** Keywords ***
+Seed
+
+    [Documentation]         Seed an account
+    Clear Database
+    Seed 1 users
+
 Fill username
     [Arguments]    ${username}    ${expected}
     Go To Url                        ${PAGE_REGISTER_URL}

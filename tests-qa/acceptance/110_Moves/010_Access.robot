@@ -3,11 +3,9 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
 Force Tags      Moves    Inventory
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear DB And Seed 1 users
 
 Anonymous users should access form
     Sign Out Fast
@@ -21,3 +19,8 @@ Authenticated users should access form
     Go To Url                               ${PAGE_MOVES_URL}
     Page Should Contain                     Identify GeoKret
     Page Should Not Contain                 Even if it is - for now - not required, we recommend you to login.
+
+*** Keywords ***
+
+Seed
+    Clear DB And Seed 1 users

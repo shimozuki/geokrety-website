@@ -3,12 +3,9 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/PageRegistration.robot
 Resource        ../vars/users.resource
 Force Tags      Sign In
+Suite Setup     Seed
 
 *** Test Cases ***
-Seed an account
-    [Documentation]         Seed an account
-    Clear Database
-    Seed 1 users
 
 Sign In user
     [Documentation]                     Good password
@@ -47,3 +44,10 @@ Fast devel logout
     Sign Out Fast
     Go To Url                           ${PAGE_HOME_URL}
     Page Should Not Contain Element     ${NAVBAR_PROFILE_LINK}
+
+*** Keywords ***
+
+Seed
+    [Documentation]         Seed an account
+    Clear Database
+    Seed 1 users

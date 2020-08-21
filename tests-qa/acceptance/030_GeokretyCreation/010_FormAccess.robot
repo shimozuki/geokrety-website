@@ -4,12 +4,9 @@ Library         DependencyLibrary
 Resource        ../functions/PageGeoKretyCreate.robot
 Resource        ../vars/users.resource
 Force Tags      Create GeoKrety
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear Database
-    Seed 2 users
 
 No link present in navbar for anonymous users
     Go To Url                           ${PAGE_HOME_URL}
@@ -26,7 +23,6 @@ Forbidden for anonymous users
     Location Should Contain             ${PAGE_SIGN_IN_URL}
 
 Sign in
-    Depends on test                     Seed
     Sign In ${USER_1.name} Fast
 
 Link present in navbar for signed in users
@@ -68,3 +64,9 @@ Direct link access to form
     Location Should Be                  ${PAGE_GEOKRETY_CREATE_URL}
     Page WithoutWarningOrFailure
     Page Should Show Creation Form
+
+*** Keywords ***
+
+Seed
+    Clear Database
+    Seed 2 users

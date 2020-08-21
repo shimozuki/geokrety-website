@@ -3,12 +3,9 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/PageRegistration.robot
 Resource        ../vars/users.resource
 Force Tags      Sign In
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear Database
-    Seed 1 users
 
 Redirects to last page
     [Documentation]                     Redirect back on news page
@@ -26,6 +23,11 @@ No redirect urls
     ${GK_URL}en/registration/fake_token/activate
 
 *** Keywords ***
+
+Seed
+    Clear Database
+    Seed 1 users
+
 Redirect to home
     [Arguments]    ${url}
     Go To Url                           ${url}

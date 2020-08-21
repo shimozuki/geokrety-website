@@ -3,12 +3,9 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
 Force Tags      Users Details
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear Database
-    Seed 2 users
 
 Buttons shown for anonymous users
     Sign Out Fast
@@ -33,6 +30,10 @@ Buttons shown for authenticated users - himself
 
 
 *** Keywords ***
+
+Seed
+    Clear Database
+    Seed 2 users
 
 Check Public Elements Presence - Anonymous
     [Documentation]    Check element presence for anonymous users

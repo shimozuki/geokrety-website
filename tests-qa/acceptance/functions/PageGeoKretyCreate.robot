@@ -24,5 +24,4 @@ Fill Creation Form
     [Arguments]    ${gk}
     Input Text                      ${GEOKRET_CREATE_NAME_INPUT}        ${gk.name}
     Select From List By Value       ${GEOKRET_CREATE_TYPE_SELECT}       ${gk.type}
-    # Workaround to fill InscrybMDE textarea field
-    Execute Javascript              $("#inputMission").data('editor').value('${gk.mission}')
+    Input Inscrybmde                \#inputMission                       ${gk.mission}

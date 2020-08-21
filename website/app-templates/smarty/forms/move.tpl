@@ -247,9 +247,9 @@
                         <label class="col-sm-2 control-label">{t}Comment{/t}</label>
                         <div class="col-sm-10">
                             <textarea id="comment" name="comment" rows="12" maxlength="5120" class="form-control" aria-describedby="helpBlockComment" data-parsley-group="additionalData" data-parsley-trigger="input focusout">{$move->comment}</textarea>
-                            <span id="helpBlockComment" class="help-block">
+                            <p id="helpBlockComment" class="help-block">
                                 {t}It is always nice to receive a little message ;){/t}
-                            </span>
+                            </p>
                         </div>
                     </div>
 

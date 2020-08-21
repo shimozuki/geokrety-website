@@ -5,18 +5,9 @@ Resource        ../functions/PageGeoKretyCreate.robot
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
 Force Tags      GeoKrety Details
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear Database
-    Seed 2 users
-
-    Sign In ${USER_1.name} Fast
-    Create GeoKret                      ${GEOKRETY_1}
-
-    Sign In ${USER_2.name} Fast
-    Create GeoKret                      ${GEOKRETY_2}
 
 Mission is shown - anonymous
     Sign Out Fast
@@ -51,3 +42,15 @@ Placeholder when no mission - authenticated - not owned
     Go To GeoKrety 2 url
     Element Should Contain              ${GEOKRET_DETAILS_MISSION}              This GeoKret doesn't have a special mission…
     Sign Out Fast
+
+*** Keywords ***
+
+Seed
+    Clear Database
+    Seed 2 users
+
+    Sign In ${USER_1.name} Fast
+    Create GeoKret                      ${GEOKRETY_1}
+
+    Sign In ${USER_2.name} Fast
+    Create GeoKret                      ${GEOKRETY_2}

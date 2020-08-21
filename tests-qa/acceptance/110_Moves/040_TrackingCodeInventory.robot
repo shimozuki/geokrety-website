@@ -1,6 +1,5 @@
 *** Settings ***
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
-Library         DependencyLibrary
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
@@ -29,15 +28,11 @@ Click Inventory Button Show Inventory
     Open Inventory
 
 Inventory Should Show GeoKrety
-    Depends on test                         Click Inventory Button Show Inventory
+    Sign In ${USER_1.name} Fast
+    Go To Url                               ${PAGE_MOVES_URL}
+    Open Inventory
     Element Count Should Be                 ${MOVE_INVENTORY_TABLE}/tr     ${gk_seed_count}
-
-First Inventory Item
-    Depends on test                         Inventory Should Show GeoKrety
     Check Item At Row Is                    1    &{GEOKRETY_1}
-
-Second Inventory Item
-    Depends on test                         Inventory Should Show GeoKrety
     Check Item At Row Is                    2    &{GEOKRETY_2}
 
 Checkbox Should Increment Button Badge

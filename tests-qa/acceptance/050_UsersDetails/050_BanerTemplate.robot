@@ -4,12 +4,9 @@ Library         RobotEyes
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
 Force Tags      Users Details
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear Database
-    Seed 2 users
 
 Anonymous users are refused
     Sign Out Fast
@@ -38,6 +35,10 @@ Select banner
     9
 
 *** Keywords ***
+
+Seed
+    Clear Database
+    Seed 2 users
 
 Select banner
     [Arguments]    ${templateId}

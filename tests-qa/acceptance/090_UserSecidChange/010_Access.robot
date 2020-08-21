@@ -3,11 +3,9 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../vars/users.resource
 Force Tags      Users Details    Security
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear DB And Seed 1 users
 
 Anonymous users should not access form
     Sign Out Fast
@@ -33,3 +31,8 @@ Expired session ask to login
     Press Keys                              None      CTRL+T
     Sign Out Fast
     Press Keys                              None      CTRL+W
+
+*** keywords ***
+
+Seed
+    Clear DB And Seed 1 users

@@ -73,7 +73,9 @@ N 52° 9' 12.2400" E 21° 3' 14.0400
 {block name=javascript}
 {include file='js/_map_init.tpl.js'}
 map = initializeMap();
+{if GK_DEVEL}
 {* used by Tests-qa in Robot  Framework *}
 $("#mapid").data({ map: map });
+{/if}
 {include file='js/users/user_observation_area.tpl.js'}
 {/block}

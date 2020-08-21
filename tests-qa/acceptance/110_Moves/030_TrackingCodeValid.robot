@@ -62,7 +62,7 @@ GeoKret Reference Should Be Displayed In Panel Heading
 
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${GEOKRETY_1.tc},${GEOKRETY_2.tc}
     Click Button                            ${MOVE_TRACKING_CODE_CHECK_BUTTON}
-    Wait Until Page Contains Element        ${MOVE_TRACKING_CODE_FIRST_RESULT_ITEM}
+    Wait Until Page Contains Element        ${MOVE_TRACKING_CODE_SECOND_RESULT_ITEM}
     Element Text Should Be                  ${MOVE_TRACKING_CODE_PANEL_HEADER_TEXT}     ${GEOKRETY_1.ref} ${GEOKRETY_2.ref}
 
     Input Text                              ${MOVE_TRACKING_CODE_INPUT}                 ${TC_INVALID}

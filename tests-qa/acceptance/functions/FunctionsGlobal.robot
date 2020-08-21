@@ -292,10 +292,28 @@ Wait Until Panel
     Element Should Contain                  ${MODAL_PANEL_TITLE}               ${title}
 
 Element Count Should Be
-    [Arguments]    ${element}    ${expect}
-    ${count} = 	Get Element Count 	        ${element}
-    Should Be Equal As Integers             ${count}    ${expect}
+    [Arguments]    ${element}    ${count}
+    # ${count} = 	Get Element Count 	        ${element}
+    # Should Be Equal As Integers             ${count}    ${expect}
+    Page Should Contain Element             ${element}    limit=${count}
 
 Wait For Text To Not Appear
     [Arguments]    ${expect}    ${timeout}=1
     Run Keyword And Expect Error    not seen    Wait Until Page Contains    ${expect}    timeout=${timeout}    error=not seen
+
+Input Value Should Be
+    [Arguments]    ${element}    ${expect}
+    ${value} = 	Get Value           ${element}
+    Should Be Equal As Strings      ${value}    ${expect}
+
+Input Inscrybmde
+    [Arguments]    ${element_id}    ${value}
+    Execute Javascript              $("${element_id}").data('editor').value('${value}')
+
+Inscrybmde To Textarea
+    [Arguments]    ${element_id}
+    Execute Javascript              $("${element_id}").data('editor').toTextArea()
+
+Textarea To Inscrybmde
+    [Arguments]    ${element_id}
+    Execute Javascript              $("${element_id}").data('editor').toEditor()

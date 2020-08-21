@@ -5,12 +5,9 @@ Resource        ../functions/PageGeoKretyCreate.robot
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
 Force Tags      Users Details
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear Database
-    Seed 2 users
 
 Public Information Visible - anonymous
     Sign Out Fast
@@ -34,6 +31,10 @@ Private Information Not Visible - authenticated - someone else
 
 
 *** Keywords ***
+
+Seed
+    Clear Database
+    Seed 2 users
 
 Has Public Information Visible - all users
     Has Public Information              ${PAGE_USER_1_PROFILE_URL}              ${USER_1}
@@ -60,6 +61,7 @@ Has Private Information
     Page Should Contain Element         ${USER_PROFILE_SECID_LABEL}
     Textfield Should Not Contain        ${USER_PROFILE_SECID}                   ${EMPTY}
     Page Should Contain                 To change your username or remove your account?
+    Page Should Contain Element         ${USER_PROFILE_MINI_MAP_PANEL}
 
 Has Not Private Information
     [Arguments]             ${url}
@@ -69,3 +71,4 @@ Has Not Private Information
     Page Should Not Contain Element     ${USER_PROFILE_SECID_LABEL}
     Page Should Not Contain Element     ${USER_PROFILE_SECID}
     Page Should Not Contain             To change your username or remove your account?
+    Page Should Not Contain Element     ${USER_PROFILE_MINI_MAP_PANEL}

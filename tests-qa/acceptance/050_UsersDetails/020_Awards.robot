@@ -5,13 +5,9 @@ Resource        ../functions/PageGeoKretyCreate.robot
 Resource        ../vars/users.resource
 Resource        ../vars/geokrety.resource
 Force Tags      Users Details
+Suite Setup     Seed
 
 *** Test Cases ***
-
-Seed
-    Clear Database
-    Seed 2 users
-    Sign Out Fast
 
 Panel should be present
     Go To User 1 url
@@ -108,6 +104,12 @@ Stat created incremented
 
 
 *** Keywords ***
+
+Seed
+    Clear Database
+    Seed 2 users
+    Sign Out Fast
+
 Check created awards counters
     [Arguments]    ${url}    ${username}    ${count}=0    ${countAwards}=0    ${distance}=0
     Go To url           ${url}

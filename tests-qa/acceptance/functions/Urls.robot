@@ -38,8 +38,8 @@ ${PAGE_USER_CHANGE_EMAIL_URL}           ${GK_URL}en/user/update-email
 
 ${PAGE_GEOKRETY_CREATE_URL}    ${GK_URL}en/geokrety/create
 
-${PAGE_GEOKRETY_1_DETAILS_URL}    ${GK_URL}en/geokrety/1
-${PAGE_GEOKRETY_2_DETAILS_URL}    ${GK_URL}en/geokrety/2
-${PAGE_GEOKRETY_3_DETAILS_URL}    ${GK_URL}en/geokrety/3
+${PAGE_GEOKRETY_1_DETAILS_URL}    ${GK_URL}en/geokrety/GK0001
+${PAGE_GEOKRETY_2_DETAILS_URL}    ${GK_URL}en/geokrety/GK0002
+${PAGE_GEOKRETY_3_DETAILS_URL}    ${GK_URL}en/geokrety/GK0003
 
 ${PAGE_USER_EMAIL_CHANGE_VALIDATE_URL}    ${GK_URL}en/user/email-change/validate
