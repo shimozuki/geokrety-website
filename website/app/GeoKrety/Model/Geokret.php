@@ -212,6 +212,9 @@ class Geokret extends Base {
         $this->afterupdate(function ($self) {
             \Event::instance()->emit('geokret.updated', $self);
         });
+        $this->aftererase(function ($self) {
+            \Event::instance()->emit('geokret.deleted', $self);
+        });
     }
 
     public function jsonSerialize() {

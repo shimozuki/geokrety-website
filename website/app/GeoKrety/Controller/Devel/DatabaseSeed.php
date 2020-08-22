@@ -4,6 +4,7 @@ namespace GeoKrety\Controller\Devel;
 
 use GeoKrety\GeokretyType;
 use GeoKrety\Model\Geokret;
+use GeoKrety\Model\Move;
 use GeoKrety\Model\User;
 use GeoKrety\Model\WaypointGC;
 use GeoKrety\Model\WaypointOC;
@@ -49,6 +50,7 @@ class DatabaseSeed extends Base {
             $geokret = new Geokret();
             $geokret->name = 'geokrety%02d';
             $geokret->type = GeokretyType::GEOKRETY_TYPE_TRADITIONAL;
+            $geokret->created_on_datetime = '2020-08-22 15:30:42';
             if ($f3->exists('PARAMS.userid')) {
                 $geokret->owner = $f3->get('PARAMS.userid');
             }
@@ -112,6 +114,108 @@ class DatabaseSeed extends Base {
                     echo sprintf("Reason: %s\n\n", $msg['text']);
                 }
             }
+        }
+
+        echo 'OK';
+    }
+
+    public function move(\Base $f3) {
+        header('Content-Type: text');
+        for ($i = 1; $i <= $f3->get('PARAMS.count'); ++$i) {
+            if ($i > 1)
+                sleep(1);
+
+            $geokret = new Geokret();
+            $geokret->load(['id = ?', $f3->get('PARAMS.gkid')]);
+            $move = new Move();
+            $move->geokret = $geokret;
+            $move->move_type = $f3->get('PARAMS.move_type');
+            if (!is_null($move->geokret->last_log)) {
+                $move->moved_on_datetime = $move->geokret->last_log->moved_on_datetime
+                    ->add(new \DateInterval('PT1S'))
+                    ->format(GK_DB_DATETIME_FORMAT);
+            } else {
+                $move->moved_on_datetime = $move->geokret->created_on_datetime
+                    ->format(GK_DB_DATETIME_FORMAT);
+            }
+            $move->username = 'someone';
+            if ($move->move_type->isCoordinatesRequired()) {
+                $move->waypoint = sprintf('GC%04d', $i);
+                $move->lat = 43.00000 + ($i - 1) / 100;
+                $move->lon = 7.00000 + ($i - 1) / 100;
+            }
+            if ($move->validate()) {
+                $move->save();
+                echo sprintf("Create move id:%d geokret:%d waypoint:%s movetype:%d wpt:%s lat:%s lon:%s\n",
+                    $move->id, $move->geokret->id, $move->waypoint, $move->move_type->getLogTypeId(),
+                    $move->waypoint, $move->lat, $move->lon);
+            } else {
+                echo sprintf("Error creating move: %d\n", $move->geokret->id);
+                foreach (\Flash::instance()->getMessages() as $msg) {
+                    echo sprintf("Reason: %s\n\n", $msg['text']);
+                }
+            }
+        }
+
+        echo 'OK';
+    }
+
+    public function move_post(\Base $f3) {
+        header('Content-Type: text');
+        $geokret = new Geokret();
+        $geokret->load(['id = ?', $f3->get('POST.gkid')]);
+        $move = new Move();
+        $move->geokret = $geokret;
+        $move->move_type = $f3->get('POST.move_type');
+        if ($f3->exists('POST.moved_on_datetime')) {
+            $move->moved_on_datetime = $f3->get('POST.moved_on_datetime');
+        } else {
+            if (!is_null($move->geokret->last_log)) {
+                $move->moved_on_datetime = $move->geokret->last_log->moved_on_datetime
+                    ->add(new \DateInterval('PT1S'))
+                    ->format(GK_DB_DATETIME_FORMAT);
+            } else {
+                $move->moved_on_datetime = $move->geokret->created_on_datetime
+                    ->format(GK_DB_DATETIME_FORMAT);
+            }
+        }
+        if ($f3->exists('POST.author')) {
+            $move->author = $f3->get('POST.author');
+        }
+        if ($f3->exists('POST.username')) {
+            $move->username = $f3->get('POST.username');
+        }
+        if ($move->move_type->isCoordinatesRequired()) {
+            if ($f3->exists('POST.waypoint') && !empty($f3->get('POST.waypoint'))) {
+                $move->waypoint = $f3->get('POST.waypoint');
+            }
+            if ($f3->exists('POST.lat') && !empty($f3->get('POST.lat'))) {
+                $move->lat = $f3->get('POST.lat');
+            }
+            if ($f3->exists('POST.lon') && !empty($f3->get('POST.lon'))) {
+                $move->lon = $f3->get('POST.lon');
+            }
+        }
+        if ($f3->exists('POST.comment')) {
+            $move->comment = $f3->get('POST.comment');
+        }
+        if ($f3->exists('POST.app')) {
+            $move->app = $f3->get('POST.app');
+        }
+        if ($f3->exists('POST.app_ver')) {
+            $move->app_ver = $f3->get('POST.app_ver');
+        }
+        if ($move->validate()) {
+            $move->save();
+            echo sprintf("Create move id:%d geokret:%d waypoint:%s movetype:%d wpt:%s lat:%s lon:%s\n",
+                $move->id, $move->geokret->id, $move->waypoint, $move->move_type->getLogTypeId(),
+                $move->waypoint, $move->lat, $move->lon);
+        } else {
+            error_log(sprintf("Error creating move: %d", $move->geokret->id));
+            foreach (\Flash::instance()->getMessages() as $msg) {
+                error_log(sprintf("Reason: %s", $msg['text']));
+            }
+            $f3->error(400);
         }
 
         echo 'OK';

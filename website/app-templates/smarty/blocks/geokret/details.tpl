@@ -44,7 +44,7 @@
                     <dd class="geokret-tracking-code"><strong>{$geokret->tracking_code}</strong></dd>
                     {/if}
                     <dt>{t}Total distance{/t}</dt>
-                    <dd class="geokret-distance"><span>{$geokret->distance}</span> km</dd>
+                    <dd class="geokret-distance"><span>{$geokret->distance|distance}</span></dd>
                     <dt>{t}Places visited{/t}</dt>
                     <dd class="geokret-caches-count">{$geokret->caches_count}</dd>
                     <dt>{t}Born{/t}</dt>

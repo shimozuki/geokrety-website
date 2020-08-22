@@ -220,6 +220,15 @@ class Move extends Base {
                 $picture->erase();
             }
         });
+        $this->afterinsert(function ($self) {
+            \Event::instance()->emit('move.created', $self);
+        });
+        $this->afterupdate(function ($self) {
+            \Event::instance()->emit('move.updated', $self);
+        });
+        $this->aftererase(function ($self) {
+            \Event::instance()->emit('move.deleted', $self);
+        });
     }
 
     public function jsonSerialize() {

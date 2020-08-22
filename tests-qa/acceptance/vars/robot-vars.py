@@ -18,6 +18,9 @@ if GK_URL is None:
     print('E: Please define variable GEOKRETY_URL')
     sys.exit()
 
+if GK_URL.endswith('/'):
+    GK_URL = GK_URL.rstrip('/')
+
 BS_HUB = None
 if not BS_ENABLED or BS_ENABLED == '0' or BS_ENABLED.lower() == 'false' :
     BS_ENABLED = 'false'

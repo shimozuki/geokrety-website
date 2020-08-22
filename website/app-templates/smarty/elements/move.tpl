@@ -1,25 +1,25 @@
 <a class="anchor" id="log{$move->id}"></a>
-<div class="panel panel-default{if $move->isAuthor()} enable-dropzone{/if}" id="move-{$move->id}" data-id="{$move->id}">
+<div class="panel panel-default{if $move->isAuthor()} enable-dropzone{/if}" id="move-{$move->id}" data-gk-type="move" data-id="{$move->id}">
     <div class="panel-body{if $move->isAuthor()} dropzone{/if}">
 
         <div class="row">
-            <div class="col-xs-2">
+            <div class="col-xs-2 move-type">
                 <button type="button" class="btn btn-default btn-xs popup-move-navigate" title="{t}Show move on map{/t}" data-id="{$move->step}" {if !$move->move_type->isCoordinatesRequired()}disabled{/if}>
                     <small>#{$move->step}</small>
                 </button>
                 {$move|logicon nofilter}
-                <small>{if !is_null($move->lat) and !is_null($move->lon)}{$move->distance}&nbsp;km{/if}</small>
+                <small class="move-distance">{if !is_null($move->lat) and !is_null($move->lon)}{$move->distance|distance}{/if}</small>
             </div>
             <div class="col-xs-10">
 
                 <div class="row">
                     <div class="col-xs-12">
 
-                        <div class="pull-left">
+                        <div class="pull-left move-cache">
                             {if $move->move_type->isCoordinatesRequired()}{$move->country|country nofilter}{/if}
                             {$move|cachelink nofilter}
                         </div>
-                        <div class="pull-right">
+                        <div class="pull-right move-author">
                             {$move->moved_on_datetime|print_date nofilter} /
                             {$move->author|userlink:$move->username nofilter}
                             {$move|application_icon nofilter}
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 move-comment">
                         {$move->comment|markdown nofilter}
                     </div>
                 </div>
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="move-pictures {if !$move->pictures_count} hidden--{/if}">
+        <div class="move-pictures {if !$move->pictures_count}hidden{/if}">
             <div class="row">
                 <div class="col-xs-12 gallery">
                     {if $move->pictures_count}

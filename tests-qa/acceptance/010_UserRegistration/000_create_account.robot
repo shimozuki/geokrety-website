@@ -14,7 +14,7 @@ Create first account
     Page ShouldShow Registration Form
     Fill Registration Form              admin
     Click Button                        ${REGISTRATION_REGISTER_BUTTON}
-    Location Should Be                  ${GK_URL}en/users/1
+    Location Should Be                  ${PAGE_USER_1_PROFILE_URL}
     Page Should Not Contain             No such item!
     Page Should Contain                 A confirmation email has been sent to your address
     Element Text Should Be              ${NAVBAR_DEV_MAILBOX_COUNTER}    1
@@ -47,7 +47,7 @@ Sign In user
     Go To Url                           ${PAGE_HOME_URL}
     Sign In User                        admin
     Page Should Not Contain             Username and password doesn't match.
-    Location Should Be                  ${GK_URL}en
+    Location Should Be                  ${PAGE_HOME_URL}
     Page Should Contain                 Welcome on board
 
 Sign Out user

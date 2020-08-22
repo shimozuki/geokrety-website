@@ -20,7 +20,7 @@ No redirect urls
     ${PAGE_SIGN_IN_URL}
     # ${PAGE_SIGN_OUT_URL}     ### DISABLED WHILE IT DOESN'T SHOW A NICE PAGE
     ${PAGE_REGISTER_URL}
-    ${GK_URL}en/registration/fake_token/activate
+    ${GK_URL}/en/registration/fake_token/activate
 
 *** Keywords ***
 

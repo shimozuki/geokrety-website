@@ -100,14 +100,14 @@ Page WaitForPageElement
     Click Element                  ${DROPDOWN_LANG}
     Wait Until Element Is Visible  ${DROPDOWN_LANG_EN}
     Click Element                  ${DROPDOWN_LANG_EN}
-    Location Should Be             ${GK_URL}en?
+    Location Should Be             ${GK_URL}/en?
 
 !Click On FR Lang
     Wait Until Element Is Visible  ${DROPDOWN_LANG}
     Click Element                  ${DROPDOWN_LANG}
     Wait Until Element Is Visible  ${DROPDOWN_LANG_FR}
     Click Element                  ${DROPDOWN_LANG_FR}
-    Location Should Be             ${GK_URL}fr?
+    Location Should Be             ${GK_URL}/fr?
 
 Click Link With Text
     [Arguments]    ${text}
@@ -123,15 +123,16 @@ Page WaitForFooterHome
     Wait Until Page Contains Element  ${FOOTER_HOME}
 
 Go To Url
-    [Arguments]    ${url}
-    Go To          ${url}
+    [Arguments]    ${url}    ${user}=${EMPTY}    ${geokrety}=${EMPTY}
+    ${url_} =       Replace Variables    ${url}
+    Go To           ${url_}
     Page WithoutWarningOrFailure
 
 Go To User ${id} url
-    Go To Url                       ${GK_URL}en/users/${id}
+    Go To Url                       ${GK_URL}/en/users/${id}
 
 Go To GeoKrety ${id} url
-    Go To Url                       ${GK_URL}en/geokrety/${id}
+    Go To Url                       ${GK_URL}/en/geokrety/${id}
 
 Location Should Not Be
     [Arguments]    ${url}
@@ -175,11 +176,11 @@ Delete Mail ${mail_id} in Mailbox
 
 Sign In ${username} Fast
     [Documentation]     Login user using special url (doesn't use login form)
-    Go To Url                         ${GK_URL}devel/users/${username}/login
+    Go To Url                         ${GK_URL}/devel/users/${username}/login
 
 Sign Out Fast
     [Documentation]     Logout user using special url (doesn't use menu, no home page load)
-    Go To Url                         ${GK_URL}devel/users/logout
+    Go To Url                         ${GK_URL}/devel/users/logout
 
 Sign In User
     [Arguments]     ${username}     ${password}=password
@@ -204,7 +205,7 @@ Seed ${count} geokrety
     Go To Url                           ${PAGE_SEED_GEOKRETY}/${count}
 
 Seed ${count} geokrety owned by ${userid}
-    Go To Url                           ${GK_URL}devel/db/users/${userid}/geokrety/seed/${count}
+    Go To Url                           ${GK_URL}/devel/db/users/${userid}/geokrety/seed/${count}
 
 Seed ${count} waypoints OC
     Go To Url                           ${PAGE_SEED_WAYPOINT_OC}/${count}
@@ -263,6 +264,7 @@ Flash message shown
 Check Image
     [Arguments]    ${element}    ${name}=img1
     Open Eyes                               SeleniumLibrary  5
+    Scroll Into View                        ${GK_LOGO_LINK}
     Scroll Into View                        ${element}
     Wait Until Element Is Visible           ${element}
     Capture Element                         ${element}    name=${name}

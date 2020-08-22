@@ -44,6 +44,8 @@ ${HOME_FOUND_GK_TRACKING_CODE_BUTTON}       //*[@id="found-geokret-submit"]
 ${HOME_FOUND_PICTURE_LIST_PANEL}            //*[@id="recentPicturesPanel"]
 ${HOME_FOUND_PICTURE_LIST_GALERY}           ${HOME_FOUND_PICTURE_LIST_PANEL}//div[contains(@class, "gallery")]
 ${HOME_FOUND_PICTURE_LIST_PICTURES}         ${HOME_FOUND_PICTURE_LIST_GALERY}//div[contains(@class, "gallery")]
+${HOME_FOUND_LATEST_MOVES_PANEL}            //*[@id="recentMovesPanel"]
+${HOME_FOUND_LATEST_MOVES_TABLE}            ${HOME_FOUND_LATEST_MOVES_PANEL}/table
 
 ################
 # NAVBAR
@@ -137,6 +139,11 @@ ${GEOKRET_DETAILS_MISSION}                      //*[@id="geokretyMissionPanel"]/
 
 ${GEOKRET_DETAILS_FOUND_IT_TRACKING_CODE}       //*[@id="tracking_code"]
 ${GEOKRET_DETAILS_FOUND_IT_BUTTON}              //*[@id="foundItLogItButton"]
+
+${GEOKRET_DETAILS_MAP_PANEL}                    //*[@id="geokretyDetailsMapPanel"]
+${GEOKRET_DETAILS_MAP}                          //*[@id="mapid"]
+${GEOKRET_DETAILS_MOVES}                        //div[@data-gk-type="move"]
+
 
 ################
 # USER PROFILE PAGE
@@ -237,6 +244,13 @@ ${USER_EMAIL_DAILY_MAIL_CHECKBOX}               //*[@id="dailyMailsCheckbox"]
 ${USER_EMAIL_VALIDATION_REFUSE_BUTTON}          //*[@id="emailChangeRefuseButton"]
 ${USER_EMAIL_VALIDATION_ACCEPT_BUTTON}          //*[@id="emailChangeAcceptButton"]
 ${USER_EMAIL_VALIDATION_DISMISS_BUTTON}         //*[@id="emailChangeDismissButton"]
+
+
+################
+# USER RECENT MOVES PAGE
+################
+
+${USER_RECENT_MOVES_TABLE}                      //*[@id="userRecentMovesTable"]
 
 ################
 # USER EMAIL PREFERENCES

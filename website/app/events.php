@@ -14,7 +14,7 @@ $events->on('user.created', function (\GeoKrety\Model\User $user) {
     audit('user.created', $user);
 });
 $events->on('user.activated', function (\GeoKrety\Model\User $user) { audit('user.activated', $user); });
-$events->on('user.destroyed', function (\GeoKrety\Model\User $user) { audit('user.destroyed', $user->id); });
+$events->on('user.deleted', function (\GeoKrety\Model\User $user) { audit('user.deleted', $user->id); });
 $events->on('activation.token.created', function (\GeoKrety\Model\AccountActivationToken $token) { audit('activation.token.generated', $token->user); });
 $events->on('activation.token.used', function (\GeoKrety\Model\AccountActivationToken $token) { audit('activation.token.used', $token); });
 $events->on('user.login', function (\GeoKrety\Model\User $user) { audit('user.login', $user); });
@@ -50,12 +50,18 @@ $events->on('geokret.created', function (\GeoKrety\Model\Geokret $geokret) {
         \GeoKrety\Service\UserBanner::generate($geokret->owner);
     }
     audit('geokret.created', $geokret);
-});  // context => s3 response
+});
 $events->on('geokret.updated', function (\GeoKrety\Model\Geokret $geokret) {
     if (!is_null($geokret->owner) && $geokret->changed('owner')) {
         \GeoKrety\Service\UserBanner::generate($geokret->owner);
     }
     audit('geokret.updated', $geokret);
+});
+$events->on('geokret.deleted', function (\GeoKrety\Model\Geokret $geokret) {
+    if (!is_null($geokret->owner)) {
+        \GeoKrety\Service\UserBanner::generate($geokret->owner);
+    }
+    audit('geokret.deleted', $geokret);
 });
 $events->on('geokret.owner_code.created', function (\GeoKrety\Model\OwnerCode $ownerCode) {
     audit('geokret.owner_code.created', $ownerCode);

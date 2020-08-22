@@ -25,6 +25,10 @@
 {block name=javascript}
 {if $geokret->caches_count}
 {include file='js/geokrety/geokrety_details_map.tpl.js'}
+{if GK_DEVEL}
+{* used by Tests-qa in Robot  Framework *}
+$("#mapid").data({ map: map });
+{/if}
 {/if}
 
 // Bind modal

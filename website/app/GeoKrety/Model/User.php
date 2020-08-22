@@ -343,6 +343,9 @@ EOT;
             \Event::instance()->emit('user.created', $this);
             $self->generateAccountActivation();
         });
+        $this->aftererase(function ($self) {
+            \Event::instance()->emit('user.deleted', $this);
+        });
     }
 
     public function validate($level = 0, $op = '<=') {

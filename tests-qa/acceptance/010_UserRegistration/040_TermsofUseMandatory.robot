@@ -21,5 +21,5 @@ Terms of use checked
     Select Checkbox               ${REGISTRATION_TERMS_OF_USE_CHECKBOX}
     Input validation has success  ${REGISTRATION_TERMS_OF_USE_CHECKBOX}
     Click Button                  ${REGISTRATION_REGISTER_BUTTON}
-    Location Should Contain       ${GK_URL}en/users/
+    Location Should Contain       ${GK_URL}/en/users/
     Page Should Not Contain       No such item!
