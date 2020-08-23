@@ -123,7 +123,7 @@ Page WaitForFooterHome
     Wait Until Page Contains Element  ${FOOTER_HOME}
 
 Go To Url
-    [Arguments]    ${url}    ${user}=${EMPTY}    ${geokrety}=${EMPTY}
+    [Arguments]    ${url}    ${userid}=${EMPTY}    ${geokrety}=${EMPTY}
     ${url_} =       Replace Variables    ${url}
     Go To           ${url_}
     Page WithoutWarningOrFailure
@@ -238,12 +238,12 @@ Element should have class
 
 Panel validation has success
     [Arguments]  ${element}
-    Wait until page contains element    ${element}\[contains(@class, "panel-success")]    timeout=2
+    Wait until page contains element    ${element}\[contains(@class, "panel-success")]    timeout=3
     # Wait until page contains element    ${element}/ancestor::div[contains(@class, "panel") and contains(@class, "panel-success")]    timeout=2
 
 Panel validation has error
     [Arguments]  ${element}
-    Wait until page contains element    ${element}\[contains(@class, "panel-danger")]    timeout=2
+    Wait until page contains element    ${element}\[contains(@class, "panel-danger")]    timeout=3
     # Wait until page contains element    ${element}/ancestor::div[contains(@class, "panel") and contains(@class, "panel-danger")]    timeout=2
 
 Panel Is Collapsed

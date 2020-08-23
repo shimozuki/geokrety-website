@@ -252,6 +252,27 @@ ${USER_EMAIL_VALIDATION_DISMISS_BUTTON}         //*[@id="emailChangeDismissButto
 
 ${USER_RECENT_MOVES_TABLE}                      //*[@id="userRecentMovesTable"]
 
+
+################
+# USER INVENTORY PAGE
+################
+
+${USER_INVENTORY_TABLE}                         //*[@id="userInventoryTable"]
+
+
+################
+# USER OWNED GEOKRETY PAGE
+################
+
+${USER_OWNED_GEOKRETY_TABLE}                    //*[@id="userOwnedGeoKretyTable"]
+
+
+################
+# USER OWNED GEOKRETY RECENT MOVES PAGE
+################
+
+${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}       //*[@id="userOwnedGeoKretyRecentMovesTable"]
+
 ################
 # USER EMAIL PREFERENCES
 ################

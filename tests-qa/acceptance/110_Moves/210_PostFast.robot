@@ -3,7 +3,7 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/moves.resource
-Force Tags      Moves    Location
+Force Tags      Moves
 Test Setup     Seed
 
 *** Test Cases ***

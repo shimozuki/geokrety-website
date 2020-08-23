@@ -5,7 +5,7 @@ Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/moves.resource
 Resource        ../vars/geokrety.resource
-Force Tags      Moves    Location
+Force Tags      Moves    GeoKret Details
 Test Setup     Seed
 
 *** Test Cases ***

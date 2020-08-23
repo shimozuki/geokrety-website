@@ -4,7 +4,7 @@ Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/users.resource
 Resource        ../vars/waypoints.resource
-Force Tags      Moves    Location
+Force Tags      Moves    Additional Data
 Suite Setup     Seed
 
 *** Test Cases ***

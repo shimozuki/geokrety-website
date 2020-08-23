@@ -5,7 +5,7 @@ Resource        ../functions/PageMoves.robot
 Resource        ../vars/users.resource
 Resource        ../vars/waypoints.resource
 Resource        ../vars/geokrety.resource
-Force Tags      Moves    Location
+Force Tags      Moves
 Test Setup     Seed
 
 *** Test Cases ***
