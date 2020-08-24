@@ -7,7 +7,7 @@ ${PAGE_SEED_GEOKRETY_OWNED_BY_USER_2}   ${GK_URL}/devel/db/users/2/geokrety/seed
 ${PAGE_SEED_WAYPOINT_OC}                ${GK_URL}/devel/db/waypoint/oc
 ${PAGE_SEED_WAYPOINT_GC}                ${GK_URL}/devel/db/waypoint/gc
 
-${PAGE_LOGIN_USER}                      ${GK_URL}/devel/users/\${username}/login
+${PAGE_LOGIN_USER}                      ${GK_URL}/devel/users/\${params.username}/login
 
 ${PAGE_DEV_MAILBOX_URL}                 ${GK_URL}/devel/mail
 ${PAGE_DEV_MAILBOX_FIRST_MAIL_URL}      ${GK_URL}/devel/mail/0
@@ -25,14 +25,17 @@ ${PAGE_SIGN_OUT_URL}                    ${GK_URL}/en/logout
 ${PAGE_NEWS_URL}                        ${GK_URL}/en/news
 ${PAGE_MOVES_URL}                       ${GK_URL}/en/moves
 
+${PAGE_MOVES_EDIT_URL}                  ${GK_URL}/en/moves/\${params.moveid}/edit
+${PAGE_MOVES_COMMENT_URL}               ${GK_URL}/en/moves/\${params.moveid}/comment
+
 ${PAGE_USER_1_PROFILE_URL}              ${GK_URL}/en/users/1
 ${PAGE_USER_2_PROFILE_URL}              ${GK_URL}/en/users/2
 ${PAGE_USER_1_PROFILE_URL_FR}           ${GK_URL}/fr/users/1
 
-${PAGE_USER_RECENT_MOVES_URL}           ${GK_URL}/en/users/\${userid}/recent-moves
-${PAGE_USER_INVENTORY_URL}              ${GK_URL}/en/users/\${userid}/inventory
-${PAGE_USER_OWNED_GEOKRETY_URL}         ${GK_URL}/en/users/\${userid}/owned-geokrety
-${PAGE_USER_OWNED_GEOKRETY_RECENT_MOVES_URL}    ${GK_URL}/en/users/\${userid}/owned/recent-moves
+${PAGE_USER_RECENT_MOVES_URL}           ${GK_URL}/en/users/\${params.userid}/recent-moves
+${PAGE_USER_INVENTORY_URL}              ${GK_URL}/en/users/\${params.userid}/inventory
+${PAGE_USER_OWNED_GEOKRETY_URL}         ${GK_URL}/en/users/\${params.userid}/owned-geokrety
+${PAGE_USER_OWNED_GEOKRETY_RECENT_MOVES_URL}    ${GK_URL}/en/users/\${params.userid}/owned/recent-moves
 
 ${PAGE_USER_1_BANER_TEMPLATE_URL}       ${GK_URL}/en/users/1/choose-statpic-template
 ${PAGE_USER_1_OBSERVATION_AREA_URL}     ${GK_URL}/en/users/1/observation-area

@@ -123,10 +123,14 @@ Page WaitForFooterHome
     Wait Until Page Contains Element  ${FOOTER_HOME}
 
 Go To Url
-    [Arguments]    ${url}    ${userid}=${EMPTY}    ${geokrety}=${EMPTY}
+    [Arguments]    ${url}    &{params}
+    Got To Url With Param    ${url}    &{params}
+    Page WithoutWarningOrFailure
+
+Got To Url With Param
+    [Arguments]    ${url}    &{params}
     ${url_} =       Replace Variables    ${url}
     Go To           ${url_}
-    Page WithoutWarningOrFailure
 
 Go To User ${id} url
     Go To Url                       ${GK_URL}/en/users/${id}
@@ -137,6 +141,17 @@ Go To GeoKrety ${id} url
 Location Should Not Be
     [Arguments]    ${url}
     Run Keyword And Expect Error    Location should have been '${url}' but was *    Location Should Be    ${url}
+
+Location With Param Should Be
+    [Arguments]    ${url}    &{params}
+    ${url_} =       Replace Variables    ${url}
+    Go To           ${url_}
+    Location Should Be    ${url_}
+
+Click Element With Param
+    [Arguments]    ${url}    &{params}
+    ${url_} =       Replace Variables    ${url}
+    Click Element   ${url_}
 
 Page WithoutWarningOrFailure
     Page Should Not Contain  Warning:
@@ -176,7 +191,7 @@ Delete Mail ${mail_id} in Mailbox
 
 Sign In ${username} Fast
     [Documentation]     Login user using special url (doesn't use login form)
-    Go To Url                         ${GK_URL}/devel/users/${username}/login
+    Go To Url                         ${PAGE_LOGIN_USER}    username=${username}
 
 Sign Out Fast
     [Documentation]     Logout user using special url (doesn't use menu, no home page load)
@@ -234,7 +249,7 @@ Input validation has error help
 
 Element should have class
     [Arguments]  ${element}  ${className}
-    Wait until page contains element    ${element}[contains(@class, "${className}")]
+    Wait until page contains element    ${element}\[contains(@class, "${className}")]
 
 Panel validation has success
     [Arguments]  ${element}

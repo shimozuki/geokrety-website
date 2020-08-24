@@ -66,18 +66,18 @@
                             </button>
                             {/if}
                             {if $move->isAuthor()}
-                            <button class="btn btn-success btn-xs movePictureUploadButton" title="{t}Upload a picture{/t}">
+                            <button class="btn btn-success btn-xs movePictureUploadButton" title="{t}Upload a picture{/t}" data-type="move-picture-upload" data-id="{$move->id}">
                                 {fa icon="plus"}&nbsp;{fa icon="picture-o"}
                             </button>
                             {/if}
-                            <button type="button" class="btn btn-info btn-xs" title="{t}Write a comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-id="{$move->id}">
+                            <button type="button" class="btn btn-info btn-xs" title="{t}Write a comment{/t}" data-toggle="modal" data-target="#modal" data-type="move-comment" data-id="{$move->id}" data-move-comment-type="comment">
                                 {fa icon="plus"}&nbsp;{fa icon="comment"}
                             </button>
                         </div>
 
                         {if $move->isAuthor() }
                         <div class="btn-group pull-right" role="group">
-                            <a class="btn btn-warning btn-xs" href="{'geokrety_move_edit'|alias:sprintf('@moveid=%d', $move->id)}" role="button" title="{t}Edit log{/t}">
+                            <a class="btn btn-warning btn-xs" href="{'geokrety_move_edit'|alias:sprintf('@moveid=%d', $move->id)}" role="button" title="{t}Edit log{/t}" data-type="move-edit" data-id="{$move->id}">
                                 {fa icon="pencil"}
                             </a>
                             <button type="button" class="btn btn-danger btn-xs" title="{t}Delete log{/t}" data-toggle="modal" data-target="#modal" data-type="move-delete" data-id="{$move->id}">
@@ -94,8 +94,10 @@
 
     </div>
     {if !(isset($hide_comments) && $hide_comments) and $move->comments_count}
+    <ul class="list-group">
     {foreach from=$move->comments item=item}
     {include file='elements/move_comment.tpl' comment=$item}
     {/foreach}
+    </ul>
     {/if}
 </div>

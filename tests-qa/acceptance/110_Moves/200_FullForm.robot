@@ -18,7 +18,7 @@ Fill Form Naturally
     Click Button                            ${MOVE_TRACKING_CODE_NEXT_BUTTON}
     Panel validation has success            ${MOVE_TRACKING_CODE_PANEL}
 
-    Click Move                              ${MOVE_LOG_TYPE_DROPPED_RADIO}
+    Click Move Type                                   ${MOVE_LOG_TYPE_DROPPED_RADIO}
     Click Button                            ${MOVE_LOG_TYPE_NEXT_BUTTON}
     Panel validation has success            ${MOVE_LOG_TYPE_PANEL}
 
@@ -42,7 +42,7 @@ Found It Log It From Home Page
     Location Should Be                      ${PAGE_MOVES_URL}?tracking_code=${GEOKRETY_1.tc}
 
     Click Button                            ${MOVE_TRACKING_CODE_NEXT_BUTTON}
-    Click Move                              ${MOVE_LOG_TYPE_GRABBED_RADIO}
+    Click Move Type                                   ${MOVE_LOG_TYPE_GRABBED_RADIO}
     Click Button                            ${MOVE_LOG_TYPE_NEXT_BUTTON}
     Input Text                              ${MOVE_ADDITIONAL_DATA_USERNAME_INPUT}      ${USER_1.name}
     Input Inscrybmde                        \#comment                                   TEST
@@ -58,7 +58,7 @@ Found It Log It From GeoKret Page
     Location Should Be                      ${PAGE_MOVES_URL}?tracking_code=${GEOKRETY_1.tc}
 
     Click Button                            ${MOVE_TRACKING_CODE_NEXT_BUTTON}
-    Click Move                              ${MOVE_LOG_TYPE_DIPPED_RADIO}
+    Click Move Type                                   ${MOVE_LOG_TYPE_DIPPED_RADIO}
     Click Button                            ${MOVE_LOG_TYPE_NEXT_BUTTON}
     Input Text                              ${MOVE_NEW_LOCATION_WAYPOINT_INPUT}         ${WPT_OC_1.id}
     Click Button                            ${MOVE_NEW_LOCATION_NEXT_BUTTON}
