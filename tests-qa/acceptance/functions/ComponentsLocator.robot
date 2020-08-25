@@ -30,11 +30,13 @@ ${FOOTER_FACEBOOK}   //*[@id="footer-facebook"]
 ${FOOTER_TWITTER}    //*[@id="footer-twitter"]
 ${FOOTER_INSTAGRAM}  //*[@id="footer-instagram"]
 
-${PICTURE_PULLER}    div[contains(@class, "pictures-actions-pull")]
-${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}      button[@data-type="define-as-main-avatar"]
-${PICTURE_PULLER_EDIT_BUTTON}               button[@data-type="picture-edit"]
-${PICTURE_PULLER_DELETE_BUTTON}             button[@data-type="picture-delete"]
+${PICTURE_PULLER}    //div[contains(@class, "pictures-actions-pull")]
+${PICTURE_PULLER_SET_AS_AVATAR_BUTTON}      //button[@data-type="define-as-main-avatar"]
+${PICTURE_PULLER_EDIT_BUTTON}               //button[@data-type="picture-edit"]
+${PICTURE_PULLER_DELETE_BUTTON}             //button[@data-type="picture-delete"]
 
+${DROPZONE_PROCESSING_SUFFIX}               //span[@class="picture-message"]
+${DROPZONE_PROCESSED_SUFFIX}                //a[@class="picture-link"]
 
 ################
 # WELCOME PAGE
@@ -143,6 +145,8 @@ ${GEOKRET_DETAILS_FOUND_IT_BUTTON}              //*[@id="foundItLogItButton"]
 ${GEOKRET_DETAILS_MAP_PANEL}                    //*[@id="geokretyDetailsMapPanel"]
 ${GEOKRET_DETAILS_MAP}                          //*[@id="mapid"]
 ${GEOKRET_DETAILS_MOVES}                        //div[@data-gk-type="move"]
+${GEOKRET_DETAILS_MOVE_1}                       //div[@data-gk-type="move" and @data-id="1"]
+${GEOKRET_DETAILS_MOVE_2}                       //div[@data-gk-type="move" and @data-id="2"]
 
 ${GEOKRET_DETAILS_MOVES_EDIT_BUTTONS}               //a[@data-type="move-edit"]
 ${GEOKRET_DETAILS_MOVES_DELETE_BUTTONS}             //button[@data-type="move-delete"]
@@ -156,8 +160,15 @@ ${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}        //li[@data-type="move-commen
 ${GEOKRET_DETAILS_MOVES_COMMENTS_SECOND_ITEM}       //li[@data-type="move-comment" and @data-move-comment-id="2"]
 ${GEOKRET_DETAILS_MOVES_COMMENTS_DELETE_BUTTON}     //li[@data-type="move-comment" and @data-move-comment-id="\${commentid}"]//button[@data-type="move-comment-delete"]
 
-${GEOKRET_MOVE_COMMENT_PANEL}                        //div[@data-gk-type="move"]
-${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}                //*[@id="comment"]
+${GEOKRET_MOVE_COMMENT_PANEL}                       //div[@data-gk-type="move"]
+${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}               //*[@id="comment"]
+
+${GEOKRET_MOVE_DROPZONE}                            //div[contains(@class, "dropzone")]
+${GEOKRET_MOVE_DROPZONE_PICTURE_UPLOAD_BUTTON}      //button[contains(@class, "movePictureUploadButton") and contains(@class, "dz-clickable")]
+${GEOKRET_MOVE_IMAGES}                              //div[contains(@class, "gallery")]/div[contains(@class, "gallery")]
+${GEOKRET_MOVE_FIRST_IMAGE}                         ${GEOKRET_MOVE_IMAGES}\[1]
+${GEOKRET_MOVE_SECOND_IMAGE}                        ${GEOKRET_MOVE_IMAGES}\[2]
+
 
 ################
 # USER PROFILE PAGE
@@ -173,8 +184,6 @@ ${USER_PROFILE_STATPIC_PANEL}                   //*[@id="userStatpicPanel"]
 
 ${USER_PROFILE_DROPZONE}                        //*[@id="userAvatar" and contains(@class, "dropzone")]
 ${USER_PROFILE_DROPZONE_IMAGE}                  //*[@id="userPicturesList"]//div[@class="gallery"]/div[@class="gallery"]
-${USER_PROFILE_DROPZONE_PROCESSING_SUFFIX}      //span[@class="picture-message"]
-${USER_PROFILE_DROPZONE_PROCESSED_SUFFIX}       //a[@class="picture-link"]
 ${USER_PROFILE_DROPZONE_PICTURE_UPLOAD_BUTTON}  //*[@id="userAvatarUploadButton" and contains(@class, "dz-clickable")]
 ${USER_PROFILE_IMAGES}                          ${USER_PROFILE_PICTURES_PANEL}//div[contains(@class, "gallery")]//div[contains(@class, "gallery")]
 ${USER_PROFILE_FIRST_IMAGE}                     //*[@id="userPicturesList"]//div[@class="gallery"]/div[@class="gallery"][1]

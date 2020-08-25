@@ -15,6 +15,8 @@ $('div.enable-dropzone').each(function() {
         dictDefaultMessage: '',
         clickable: baseSelector + " button.movePictureUploadButton",
         previewsContainer: baseSelector + " .move-pictures div.gallery",
+        hiddenInputContainer: baseSelector + " .dropzone",
+
 
         accept: function (file, done) {
             file.postData = [];

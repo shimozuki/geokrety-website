@@ -97,6 +97,9 @@
                             <a id="navbar-localmail" href="{'devel_mail_list'|alias}" class="btn btn-danger">
                                 {fa icon="envelope"} Mailbox <span class="badge">{if is_countable($f3->get('SESSION.LOCAL_MAIL'))}{$f3->get('SESSION.LOCAL_MAIL')|count}{else}0{/if}</span>
                             </a>
+                            <a id="navbar-fastauth" href="{'devel_login_user'|alias:sprintf('@username=%s', username1)}" class="btn btn-danger">
+                                {fa icon="sign-in"} SignInFast</span>
+                            </a>
                         </div>
                     </p>
                 </li>

@@ -11,6 +11,7 @@ $("div#geokretAvatar").dropzone({
     dictDefaultMessage: '',
     clickable: "#geokretAvatarUploadButton",
     previewsContainer: "#geokretPicturesList div.panel-body div.gallery",
+    hiddenInputContainer: "div#geokretAvatar",
 
     accept: function (file, done) {
         file.postData = [];

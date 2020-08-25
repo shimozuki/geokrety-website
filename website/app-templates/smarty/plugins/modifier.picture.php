@@ -46,9 +46,7 @@ function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = 
             {/if}
         </div>
         <figcaption>
-            <p class="text-center picture-caption" title="{$picture->caption}">
-                {$picture->caption}&nbsp;
-            </p>
+            <p class="text-center picture-caption" title="{$picture->caption}">{$picture->caption}</p>
             {if $showItemLink}
             <p class="text-center">
                 {if $picture->isType(\Geokrety\PictureType::PICTURE_USER_AVATAR)}

@@ -27,6 +27,7 @@ ${PAGE_MOVES_URL}                       ${GK_URL}/en/moves
 
 ${PAGE_MOVES_EDIT_URL}                  ${GK_URL}/en/moves/\${params.moveid}/edit
 ${PAGE_MOVES_COMMENT_URL}               ${GK_URL}/en/moves/\${params.moveid}/comment
+${PAGE_MOVES_DELETE_URL}                ${GK_URL}/en/moves/\${params.moveid}/delete
 
 ${PAGE_USER_1_PROFILE_URL}              ${GK_URL}/en/users/1
 ${PAGE_USER_2_PROFILE_URL}              ${GK_URL}/en/users/2
