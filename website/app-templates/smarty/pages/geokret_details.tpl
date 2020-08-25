@@ -14,7 +14,9 @@
     </div>
 {include file='blocks/geokret/mission.tpl'}
 {include file='blocks/geokret/found_it.tpl'}
-{include file='blocks/geokret/actions.tpl'}
+{if $f3->get('SESSION.CURRENT_USER')}
+    {include file='blocks/geokret/actions.tpl'}
+{/if}
 
     <a class="anchor" id="moves"></a>
 {include file='blocks/geokret/map.tpl'}
