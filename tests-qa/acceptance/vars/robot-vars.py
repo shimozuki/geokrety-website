@@ -1,6 +1,10 @@
 import os
 import sys
 
+# Define Default Timezone for all tests
+# No Daylight saving - UTC+03:00
+os.environ["TZ"] = "Africa/Nairobi"
+
 GK_TIMEOUT_MINUTES = 2
 BROWSER = "Firefox"
 PROJECT_NAME = "GeoKrety"

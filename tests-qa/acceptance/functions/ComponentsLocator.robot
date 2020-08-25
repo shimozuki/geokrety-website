@@ -152,6 +152,8 @@ ${GEOKRET_DETAILS_MOVES_MISSING_BUTTON}             //button[@data-type="move-co
 
 ${GEOKRET_DETAILS_MOVES_COMMENTS_ALL_ITEMS}         //li[@data-type="move-comment"]
 ${GEOKRET_DETAILS_MOVES_COMMENTS_ITEMS}             //li[@data-type="move-comment" and @data-move-comment-id="\${commentid}"]
+${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}        //li[@data-type="move-comment" and @data-move-comment-id="1"]
+${GEOKRET_DETAILS_MOVES_COMMENTS_SECOND_ITEM}       //li[@data-type="move-comment" and @data-move-comment-id="2"]
 ${GEOKRET_DETAILS_MOVES_COMMENTS_DELETE_BUTTON}     //li[@data-type="move-comment" and @data-move-comment-id="\${commentid}"]//button[@data-type="move-comment-delete"]
 
 ${GEOKRET_MOVE_COMMENT_PANEL}                        //div[@data-gk-type="move"]

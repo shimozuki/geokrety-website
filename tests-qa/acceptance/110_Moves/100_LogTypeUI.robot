@@ -36,17 +36,17 @@ Select Dropped
 Select Grabbed
     Go To Url                               ${PAGE_MOVES_URL}
     Open Panel                              ${MOVE_LOG_TYPE_PANEL}
-    Click Move Type                              ${MOVE_LOG_TYPE_GRABBED_RADIO}
+    Click Move Type                         ${MOVE_LOG_TYPE_GRABBED_RADIO}
     Panel validation has success            ${MOVE_LOG_TYPE_PANEL}
     Element Text Should Be                  ${MOVE_LOG_TYPE_PANEL_HEADER_TEXT}      Grabbed
     Element Should Not Be Visible           ${MOVE_NEW_LOCATION_PANEL}
-    Click Move Type                              ${MOVE_LOG_TYPE_DROPPED_RADIO}
+    Click Move Type                         ${MOVE_LOG_TYPE_DROPPED_RADIO}
     Element Should Be Visible               ${MOVE_NEW_LOCATION_PANEL}
 
 Select Meet
     Go To Url                               ${PAGE_MOVES_URL}
     Open Panel                              ${MOVE_LOG_TYPE_PANEL}
-    Click Move Type                              ${MOVE_LOG_TYPE_MEET_RADIO}
+    Click Move Type                         ${MOVE_LOG_TYPE_MEET_RADIO}
     Panel validation has success            ${MOVE_LOG_TYPE_PANEL}
     Element Text Should Be                  ${MOVE_LOG_TYPE_PANEL_HEADER_TEXT}      Met
     Element Should Be Visible               ${MOVE_NEW_LOCATION_PANEL}
@@ -54,7 +54,7 @@ Select Meet
 Select Dipped
     Go To Url                               ${PAGE_MOVES_URL}
     Open Panel                              ${MOVE_LOG_TYPE_PANEL}
-    Click Move Type                              ${MOVE_LOG_TYPE_DIPPED_RADIO}
+    Click Move Type                         ${MOVE_LOG_TYPE_DIPPED_RADIO}
     Panel validation has success            ${MOVE_LOG_TYPE_PANEL}
     Element Text Should Be                  ${MOVE_LOG_TYPE_PANEL_HEADER_TEXT}      Dipped
     Element Should Be Visible               ${MOVE_NEW_LOCATION_PANEL}
@@ -62,11 +62,11 @@ Select Dipped
 Select Comment
     Go To Url                               ${PAGE_MOVES_URL}
     Open Panel                              ${MOVE_LOG_TYPE_PANEL}
-    Click Move Type                              ${MOVE_LOG_TYPE_COMMENT_RADIO}
+    Click Move Type                         ${MOVE_LOG_TYPE_COMMENT_RADIO}
     Panel validation has success            ${MOVE_LOG_TYPE_PANEL}
     Element Text Should Be                  ${MOVE_LOG_TYPE_PANEL_HEADER_TEXT}      Comment
     Element Should Not Be Visible           ${MOVE_NEW_LOCATION_PANEL}
-    Click Move Type                              ${MOVE_LOG_TYPE_DROPPED_RADIO}
+    Click Move Type                         ${MOVE_LOG_TYPE_DROPPED_RADIO}
     Element Should Be Visible               ${MOVE_NEW_LOCATION_PANEL}
 
 

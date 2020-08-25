@@ -4,7 +4,7 @@ Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/users.resource
 Resource        ../vars/waypoints.resource
-Force Tags      Moves    Additional Data
+Force Tags      Moves    Additional Data    Timezone
 Suite Setup     Seed
 
 *** Test Cases ***
@@ -171,8 +171,3 @@ Open DateTimePicker
     # let activate retry as sometimes the ToolTip is still over element
     Wait Until Keyword Succeeds    2x    200ms    Click Element    ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}
     Wait Until Page Contains Element        ${MOVE_ADDITIONAL_DATA_DATE_TIME_PICKER_WIDGET}
-
-Set DateTime
-    [Arguments]    ${datetime}=2020-08-12 07:30:00    ${timezone}=+00:00
-    Execute Javascript                      $("#datetimepicker").data("DateTimePicker").date(moment.utc("${datetime}").zone("${timezone}"));
-    Simulate Event                          ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}         blur

@@ -25,6 +25,11 @@ Post Move Comment
     Input Text                              ${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}       ${comment}
     Click Button                            ${MODAL_PANEL_SUBMIT_BUTTON}
 
+Set DateTime
+    [Arguments]    ${datetime}=2020-08-12 07:30:00    ${timezone}=+00:00
+    Execute Javascript                      $("#datetimepicker").data("DateTimePicker").date(moment.utc("${datetime}").zone("${timezone}"));
+    Simulate Event                          ${MOVE_ADDITIONAL_DATA_DATE_TIME_INPUT}         blur
+
 Check Move
     [Arguments]    ${table}    ${row}    ${move}    ${gk}=${GEOKRETY_1}    ${comment}=${move.comment}    ${distance}=${EMPTY}    ${author}=username1
     Page Should Contain Element             ${table}//tr[${row}]/td[1]//img[@data-gk-move-type=${move.move_type}]

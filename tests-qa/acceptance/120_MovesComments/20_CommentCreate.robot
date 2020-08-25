@@ -42,7 +42,7 @@ Post Comment Via Direct Url
     Input Text                              ${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}       ${COMMENT}
     Click Button                            ${MODAL_PANEL_SUBMIT_BUTTON}
     Location With Param Should Be           ${PAGE_GEOKRETY_1_DETAILS_URL}
-    Check Move Comment                      ${GEOKRET_DETAILS_MOVES_COMMENTS_ITEMS}     author=${USER_1.name}    comment=${COMMENT}
+    Check Move Comment                      ${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}    comment=${COMMENT}
 
 Post Comment Via Modal
     Sign In ${USER_1.name} Fast
@@ -51,7 +51,7 @@ Post Comment Via Modal
     Input Text                              ${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}       ${COMMENT}
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
     Location With Param Should Be           ${PAGE_GEOKRETY_1_DETAILS_URL}
-    Check Move Comment                      ${GEOKRET_DETAILS_MOVES_COMMENTS_ITEMS}     author=${USER_1.name}    comment=${COMMENT}
+    Check Move Comment                      ${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}    comment=${COMMENT}
 
 Check Valid Comments
     [Template]    Submit Valid Comment Template
@@ -83,7 +83,7 @@ Submit Valid Comment Template
     Input validation has success            ${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}
     Click Button                            ${MODAL_PANEL_SUBMIT_BUTTON}
     Location With Param Should Be           ${PAGE_GEOKRETY_1_DETAILS_URL}
-    Check Move Comment                      ${GEOKRET_DETAILS_MOVES_COMMENTS_ITEMS}     author=${USER_1.name}    comment=${comment}
+    Check Move Comment                      ${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}     author=${USER_1.name}    comment=${comment}
 
 Submit Invalid Comment Template
     [Arguments]    ${comment}    ${expect}=This value is required.

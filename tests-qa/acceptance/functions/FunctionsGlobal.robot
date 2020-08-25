@@ -48,6 +48,7 @@ Global TearDown
     ...                 Call Method    ${firefox_options}   add_argument    -headless
     ${dc}   Evaluate    sys.modules['selenium.webdriver'].DesiredCapabilities.FIREFOX  sys, selenium.webdriver
     Set To Dictionary   ${dc}      strictFileInteractability=${FALSE}
+    Set To Dictionary   ${dc}      timezone=UTC-05:00
     Create Webdriver    Firefox    firefox_options=${firefox options}    desired_capabilities=${dc}
 
 !Open GeoKrety Browser Chrome

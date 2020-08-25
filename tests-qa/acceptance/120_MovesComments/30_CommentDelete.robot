@@ -31,9 +31,9 @@ Author Can Delete Comment
     Click Element With Param                ${GEOKRET_DETAILS_MOVES_COMMENTS_DELETE_BUTTON}
     Wait Until Modal                        Do you really want to delete this move comment?
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
-    Page Should Not Contain Element         ${GEOKRET_DETAILS_MOVES_COMMENTS_ITEMS}
+    Page Should Not Contain Element         ${GEOKRET_DETAILS_MOVES_COMMENTS_FIRST_ITEM}
     Set Test Variable                       ${commentid}    ${2}
-    Check Move Comment                      ${GEOKRET_DETAILS_MOVES_COMMENTS_ITEMS}
+    Check Move Comment                      ${GEOKRET_DETAILS_MOVES_COMMENTS_SECOND_ITEM}    comment=${COMMENT_2}
 
 
 *** Keywords ***
