@@ -14,7 +14,7 @@ Suite Setup     Seed
 GeoKrety Should Be Shown On User Owned GeoKrety Page
     Go To Url                               ${PAGE_USER_OWNED_GEOKRETY_RECENT_MOVES_URL}    userid=${USER_2.id}
     Element Count Should Be                 ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}/tbody/tr        6
-    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${1}    ${MOVE_6}    distance=14
+    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${1}    ${MOVE_26}   distance=14
     Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${2}    ${MOVE_5}
     Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${3}    ${MOVE_4}    distance=14
     Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${4}    ${MOVE_3}
@@ -37,4 +37,4 @@ Seed
     Post Move                               ${MOVE_3}
     Post Move                               ${MOVE_4}
     Post Move                               ${MOVE_5}
-    Post Move                               ${MOVE_6}
+    Post Move                               ${MOVE_26}

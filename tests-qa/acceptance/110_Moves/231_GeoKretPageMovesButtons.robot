@@ -71,4 +71,4 @@ Seed
     Post Move                               ${MOVE_23}
     Post Move                               ${MOVE_4}
     Post Move                               ${MOVE_25}
-    Post Move                               ${MOVE_6}
+    Post Move                               ${MOVE_26}

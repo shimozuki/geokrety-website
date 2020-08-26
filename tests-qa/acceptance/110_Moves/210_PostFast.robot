@@ -4,7 +4,7 @@ Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/moves.resource
 Force Tags      Moves
-Test Setup     Seed
+Test Setup      Seed
 
 *** Test Cases ***
 
