@@ -38,16 +38,19 @@ ${PICTURE_PULLER_DELETE_BUTTON}             //button[@data-type="picture-delete"
 ${DROPZONE_PROCESSING_SUFFIX}               //span[@class="picture-message"]
 ${DROPZONE_PROCESSED_SUFFIX}                //a[@class="picture-link"]
 
+${PAGINATOR}            //ul[@data-gk-type="paginator"]
+
 ################
 # WELCOME PAGE
 ################
 ${HOME_FOUND_GK_TRACKING_CODE_INPUT}        //*[@id="tracking_code"]
 ${HOME_FOUND_GK_TRACKING_CODE_BUTTON}       //*[@id="found-geokret-submit"]
-${HOME_FOUND_PICTURE_LIST_PANEL}            //*[@id="recentPicturesPanel"]
-${HOME_FOUND_PICTURE_LIST_GALERY}           ${HOME_FOUND_PICTURE_LIST_PANEL}//div[contains(@class, "gallery")]
-${HOME_FOUND_PICTURE_LIST_PICTURES}         ${HOME_FOUND_PICTURE_LIST_GALERY}//div[contains(@class, "gallery")]
-${HOME_FOUND_LATEST_MOVES_PANEL}            //*[@id="recentMovesPanel"]
-${HOME_FOUND_LATEST_MOVES_TABLE}            ${HOME_FOUND_LATEST_MOVES_PANEL}/table
+${HOME_PICTURE_LIST_PANEL}                  //*[@id="recentPicturesPanel"]
+${HOME_PICTURE_LIST_GALERY}                 ${HOME_PICTURE_LIST_PANEL}//div[contains(@class, "gallery")]
+${HOME_PICTURE_LIST_PICTURES}               ${HOME_PICTURE_LIST_GALERY}//div[contains(@class, "gallery")]
+${HOME_MOVES_PANEL}                         //*[@id="recentMovesPanel"]
+${HOME_LATEST_MOVES_TABLE}                  ${HOME_MOVES_PANEL}/table
+${HOME_NEWS_PANELS}                         //*[@data-gk-type="news"]
 
 ################
 # NAVBAR
@@ -167,6 +170,12 @@ ${GEOKRET_DETAILS_MOVES_COMMENTS_DELETE_BUTTON}     //li[@data-type="move-commen
 
 ${GEOKRET_MOVE_COMMENT_PANEL}                       //div[@data-gk-type="move"]
 ${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}               //*[@id="comment"]
+
+${GEOKRET_DETAILS_AVATAR_DROPZONE}                            //div[contains(@class, "dropzone")]
+${GEOKRET_DETAILS_AVATAR_DROPZONE_PICTURE_UPLOAD_BUTTON}      //button[contains(@class, "geokretAvatarUploadButton") and contains(@class, "dz-clickable")]
+${GEOKRET_DETAILS_AVATAR_IMAGES}                              //*[@id="geokretPicturesList"]//div[contains(@class, "gallery")]/div[contains(@class, "gallery")]
+${GEOKRET_DETAILS_AVATAR_FIRST_IMAGE}                         ${GEOKRET_DETAILS_AVATAR_IMAGES}\[1]
+${GEOKRET_DETAILS_AVATAR_SECOND_IMAGE}                        ${GEOKRET_DETAILS_AVATAR_IMAGES}\[2]
 
 ${GEOKRET_MOVE_DROPZONE}                            //div[contains(@class, "dropzone")]
 ${GEOKRET_MOVE_DROPZONE_PICTURE_UPLOAD_BUTTON}      //button[contains(@class, "movePictureUploadButton") and contains(@class, "dz-clickable")]
@@ -318,7 +327,7 @@ ${USER_CONTACT_SUBJECT_INPUT}                   //*[@id="inputSubject"]
 ${USER_CONTACT_MESSAGE_INPUT}                   //*[@id="message"]
 
 ################
-# USER EMAIL PREFERENCES
+# MOVES
 ################
 
 ${MOVE_TRACKING_CODE_PANEL}                     //*[@id="panelMoveGeoKret"]
@@ -390,7 +399,47 @@ ${MOVE_ADDITIONAL_DATA_COMMENT_INPUT}               //*[@id="comment"]
 ${MOVE_ADDITIONAL_DATA_COMMENT_CODEMIRROR}          ${MOVE_ADDITIONAL_DATA_PANEL}//div[contains(@class, "CodeMirror")]
 
 
+################
+# GALLERY
+################
 
+${GALLERY_IMAGES}                                   //div[@class="gallery"]/div[@class="gallery"]
+${GALLERY_FIRST_IMAGE}                              ${GALLERY_IMAGES}\[1]
+${GALLERY_SECOND_IMAGE}                             ${GALLERY_IMAGES}\[2]
+${GALLERY_THIRD_IMAGE}                              ${GALLERY_IMAGES}\[3]
+${GALLERY_FOURTH_IMAGE}                             ${GALLERY_IMAGES}\[4]
+
+################
+# NEWS
+################
+
+${NEWS_PANEL}                                   //div[contains(@class, "panel") and @data-gk-type="news"]
+${NEWS_PANEL_HEADING}                           ${NEWS_PANEL}//div[@class="panel-heading"]
+${NEWS_PANEL_BODY}                              ${NEWS_PANEL}//div[@class="panel-body"]
+
+${NEWS_TITLE}                                   ${NEWS_PANEL_HEADING}//h3//span[@class="title"]
+${NEWS_AUTHOR}                                  ${NEWS_PANEL_HEADING}//i[@class="author"]
+${NEWS_LINK}                                    ${NEWS_PANEL_HEADING}//a[@data-gk-type="news-link"]
+${NEWS_COMMENTS_COUNT}                          ${NEWS_PANEL_HEADING}//span[@class="badge"]
+${NEWS_CONTENT}                                 ${NEWS_PANEL_BODY}
+${NEWS_SUBSCRIPTION_BUTTON}                     ${NEWS_PANEL_HEADING}//button[@data-type="news-subscription"]
+
+${NEWS_COMMENT_FORM_PANEL}                       //*[@id="newsCommentPanel"]
+${NEWS_COMMENT_FORM_PANEL_TITLE}                 ${NEWS_COMMENT_FORM_PANEL}/div[contains(@class, "panel-heading")]
+${NEWS_COMMENT_FORM_PANEL_CONTENT}               ${NEWS_COMMENT_FORM_PANEL}/div[contains(@class, "panel-body")]
+${NEWS_COMMENT_FORM_MESSAGE_INPUT}               //*[@id="content"]
+${NEWS_COMMENT_FORM_SUBSCRIBE_CHECKBOX}          ${NEWS_COMMENT_FORM_PANEL}//*[@id="subscribe"]
+
+${NEWS_COMMENTS}                                //div[@data-gk-type="news-comment"]
+${NEWS_COMMENT_FIRST_COMMENT}                   ${NEWS_COMMENTS}\[1]
+${NEWS_COMMENT_SECOND_COMMENT}                  ${NEWS_COMMENTS}\[2]
+${NEWS_COMMENT_THIRD_COMMENT}                   ${NEWS_COMMENTS}\[3]
+
+${NEWS_COMMENT_PANEL}                           ${NEWS_COMMENTS}
+${NEWS_COMMENT_PANEL_HEADER}                    ${NEWS_COMMENT_PANEL}/div[contains(@class, "panel-heading")]
+${NEWS_COMMENT_PANEL_CONTENT}                   ${NEWS_COMMENT_PANEL}/div[contains(@class, "panel-body")]
+${NEWS_COMMENT_AUTHOR}                          ${NEWS_COMMENT_PANEL_HEADER}//a[@data-gk-link="user"]
+${NEWS_COMMENT_DELETE_BUTTON}                   ${NEWS_COMMENT_PANEL_HEADER}//button[@data-type="news-comment-delete"]
 
 
 #

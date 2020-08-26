@@ -193,6 +193,7 @@ Delete Mail ${mail_id} in Mailbox
 Sign In ${username} Fast
     [Documentation]     Login user using special url (doesn't use login form)
     Go To Url                         ${PAGE_LOGIN_USER}    username=${username}
+    Page Should Not Contain           Error signing in user
 
 Sign Out Fast
     [Documentation]     Logout user using special url (doesn't use menu, no home page load)
@@ -333,3 +334,8 @@ Inscrybmde To Textarea
 Textarea To Inscrybmde
     [Arguments]    ${element_id}
     Execute Javascript              $("${element_id}").data('editor').toEditor()
+
+Element Attribute Should Be
+    [Arguments]    ${element}    ${attribute}    ${expect}
+    ${attr} =    Get Element Attribute      ${element}      ${attribute}
+    Should Be Equal As Strings              ${attr}         ${expect}

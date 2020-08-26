@@ -6,6 +6,7 @@ ${PAGE_SEED_GEOKRETY_OWNED_BY_USER_1}   ${GK_URL}/devel/db/users/1/geokrety/seed
 ${PAGE_SEED_GEOKRETY_OWNED_BY_USER_2}   ${GK_URL}/devel/db/users/2/geokrety/seed
 ${PAGE_SEED_WAYPOINT_OC}                ${GK_URL}/devel/db/waypoint/oc
 ${PAGE_SEED_WAYPOINT_GC}                ${GK_URL}/devel/db/waypoint/gc
+${PAGE_SEED_NEWS}                       ${GK_URL}/devel/db/news/seed
 
 ${PAGE_LOGIN_USER}                      ${GK_URL}/devel/users/\${params.username}/login
 
@@ -22,8 +23,10 @@ ${PAGE_TERMS_OF_USE_URL}                ${GK_URL}/en/terms-of-use
 ${PAGE_REGISTER_URL}                    ${GK_URL}/en/registration
 ${PAGE_SIGN_IN_URL}                     ${GK_URL}/en/login
 ${PAGE_SIGN_OUT_URL}                    ${GK_URL}/en/logout
-${PAGE_NEWS_URL}                        ${GK_URL}/en/news
+${PAGE_NEWS_LIST_URL}                   ${GK_URL}/en/news
+${PAGE_NEWS_URL}                        ${GK_URL}/en/news/\${params.newsid}
 ${PAGE_MOVES_URL}                       ${GK_URL}/en/moves
+${PAGE_PICTURES_GALLERY_URL}            ${GK_URL}/en/picture/gallery
 
 ${PAGE_MOVES_EDIT_URL}                  ${GK_URL}/en/moves/\${params.moveid}/edit
 ${PAGE_MOVES_COMMENT_URL}               ${GK_URL}/en/moves/\${params.moveid}/comment
@@ -37,6 +40,8 @@ ${PAGE_USER_RECENT_MOVES_URL}           ${GK_URL}/en/users/\${params.userid}/rec
 ${PAGE_USER_INVENTORY_URL}              ${GK_URL}/en/users/\${params.userid}/inventory
 ${PAGE_USER_OWNED_GEOKRETY_URL}         ${GK_URL}/en/users/\${params.userid}/owned-geokrety
 ${PAGE_USER_OWNED_GEOKRETY_RECENT_MOVES_URL}    ${GK_URL}/en/users/\${params.userid}/owned/recent-moves
+${PAGE_USER_POSTED_PICTURES_URL}        ${GK_URL}/en/users/\${params.userid}/pictures
+${PAGE_USER_OWNED_GEOKRETY_PICTURES_URL}        ${GK_URL}/en/users/\${params.userid}/owned/pictures
 
 ${PAGE_USER_1_BANER_TEMPLATE_URL}       ${GK_URL}/en/users/1/choose-statpic-template
 ${PAGE_USER_1_OBSERVATION_AREA_URL}     ${GK_URL}/en/users/1/observation-area

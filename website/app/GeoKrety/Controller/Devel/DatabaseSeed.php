@@ -2,9 +2,11 @@
 
 namespace GeoKrety\Controller\Devel;
 
+use DateTime;
 use GeoKrety\GeokretyType;
 use GeoKrety\Model\Geokret;
 use GeoKrety\Model\Move;
+use GeoKrety\Model\News;
 use GeoKrety\Model\User;
 use GeoKrety\Model\WaypointGC;
 use GeoKrety\Model\WaypointOC;
@@ -222,5 +224,34 @@ class DatabaseSeed extends Base {
         }
 
         echo 'OK';
+    }
+
+    public function news(\Base $f3) {
+        header('Content-Type: text');
+        $start_i = $f3->get('GET.i') ?? 1;
+        for ($i = 1; $i <= $f3->get('PARAMS.count'); ++$i) {
+            $news = new News();
+            $news->author = 1;
+            $news->content = "News $i content";
+            $news->title = "News $i title";
+            if ($f3->exists('GET.publish_date')) {
+                $news->created_on_datetime = DateTime::createFromFormat('Y-m-d\TH:i:sT', $f3->get('GET.publish_date'))->format(GK_DB_DATETIME_FORMAT);
+            } else {
+                $news->touch('created_on_datetime');
+
+            }
+            if ($news->validate()) {
+                $news->save();
+                echo sprintf("Create news: %s\n", $news->title);
+            } else {
+                echo sprintf("Error creating news: %s\n", $news->title);
+                foreach (\Flash::instance()->getMessages() as $msg) {
+                    echo sprintf("Reason: %s\n\n", $msg['text']);
+                }
+            }
+        }
+
+        echo "==========\n";
+        echo 'done!';
     }
 }

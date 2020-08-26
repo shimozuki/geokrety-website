@@ -11,6 +11,7 @@ $("div#userAvatar").dropzone({
     dictDefaultMessage: '',
     clickable: "#userAvatarUploadButton",
     previewsContainer: "#userPicturesList div.panel-body > div.gallery",
+    hiddenInputContainer: "div#userAvatar",
 
     accept: function (file, done) {
         file.postData = [];

@@ -9,9 +9,9 @@ Suite Setup     Seed
 
 Redirects to last page
     [Documentation]                     Redirect back on news page
-    Go To Url                           ${PAGE_NEWS_URL}
+    Go To Url                           ${PAGE_NEWS_LIST_URL}
     Sign In User                        ${USER_1.name}
-    Location Should Be                  ${PAGE_NEWS_URL}
+    Location Should Be                  ${PAGE_NEWS_LIST_URL}
     Sign Out User
 
 No redirect urls

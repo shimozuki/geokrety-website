@@ -53,7 +53,7 @@ Sign In user
 Sign Out user
     Depends on test                     Sign In user
     [Documentation]                     User can sign out
-    Go To Url                           ${PAGE_NEWS_URL}
+    Go To Url                           ${PAGE_NEWS_LIST_URL}
     Sign Out User
     Location Should Be                  ${PAGE_HOME_URL}
     Page Should Not Contain Element     ${NAVBAR_PROFILE_LINK}

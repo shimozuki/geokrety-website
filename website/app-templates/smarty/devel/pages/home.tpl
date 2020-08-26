@@ -34,6 +34,9 @@
                         <li>
                             <a href="{'devel_seed_waypoint_gc'|alias:sprintf('@count=%d', 1)}">Seed "1" Waypoint GC</a>
                         </li>
+                        <li>
+                            <a href="{'devel_seed_news'|alias:sprintf('@count=%d', 1)}">Seed "1" News</a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -30,10 +30,10 @@ Seed
 
 Check Homepage Recent Move
     [Arguments]    ${row}    ${move}    ${gk}=${GEOKRETY_1}    ${comment}=${move.comment}    ${distance}=0 km    ${author}=username1
-    Page Should Contain Element             ${HOME_FOUND_LATEST_MOVES_TABLE}//tr[${row}]/td[1]//img[@data-gk-move-type=${move.move_type}]
-    Table Cell Should Contain               ${HOME_FOUND_LATEST_MOVES_TABLE}    ${row + 1}    2    ${gk.name}
-    Table Cell Should Contain               ${HOME_FOUND_LATEST_MOVES_TABLE}    ${row + 1}    2    ${gk.ref}
-    Table Cell Should Contain               ${HOME_FOUND_LATEST_MOVES_TABLE}    ${row + 1}    3    ${move.waypoint}
-    Table Cell Should Contain               ${HOME_FOUND_LATEST_MOVES_TABLE}    ${row + 1}    4    ${comment}
-    Table Cell Should Contain               ${HOME_FOUND_LATEST_MOVES_TABLE}    ${row + 1}    5    ${author}
-    Table Cell Should Contain               ${HOME_FOUND_LATEST_MOVES_TABLE}    ${row + 1}    6    ${distance}
+    Page Should Contain Element             ${HOME_LATEST_MOVES_TABLE}//tr[${row}]/td[1]//img[@data-gk-move-type=${move.move_type}]
+    Table Cell Should Contain               ${HOME_LATEST_MOVES_TABLE}    ${row + 1}    2    ${gk.name}
+    Table Cell Should Contain               ${HOME_LATEST_MOVES_TABLE}    ${row + 1}    2    ${gk.ref}
+    Table Cell Should Contain               ${HOME_LATEST_MOVES_TABLE}    ${row + 1}    3    ${move.waypoint}
+    Table Cell Should Contain               ${HOME_LATEST_MOVES_TABLE}    ${row + 1}    4    ${comment}
+    Table Cell Should Contain               ${HOME_LATEST_MOVES_TABLE}    ${row + 1}    5    ${author}
+    Table Cell Should Contain               ${HOME_LATEST_MOVES_TABLE}    ${row + 1}    6    ${distance}

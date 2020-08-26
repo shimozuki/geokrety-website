@@ -19,7 +19,7 @@ function smarty_modifier_picture(?Picture $picture, ?bool $showActionsButtons = 
     }
 
     $template_string = <<<'EOT'
-<div class="gallery">
+<div class="gallery" data-gk-type="picture" data-picture-type="{$picture->type->getTypeId()}" data-id="{$picture->id}">
     <figure>
         <div id="{$picture->key}" class="parent">
             <div class="image-container">
