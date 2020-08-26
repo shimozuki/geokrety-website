@@ -20,8 +20,8 @@ User Can Subscribe
     Click Button                                    ${NEWS_SUBSCRIPTION_BUTTON}
     Wait Until Modal                                Subscribe to this news?
     Click Button                                    ${MODAL_DIALOG_SUBMIT_BUTTON}
-    Element Attribute Should Be                     ${NEWS_SUBSCRIPTION_BUTTON}     data-subscribed         1
     Flash message shown                             You will now receive updates on new comments.
+    Element Attribute Should Be                     ${NEWS_SUBSCRIPTION_BUTTON}     data-subscribed         1
 
 User Can Unsubscribe
     Sign In ${USER_1.name} Fast

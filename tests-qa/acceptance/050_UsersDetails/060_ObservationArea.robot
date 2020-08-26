@@ -87,6 +87,7 @@ Save Observation Area Preferences
     Go To                                   ${PAGE_USER_1_OBSERVATION_AREA_URL}
     Fill form                               ${COORDS_NEW_YORK}    10
     Click Button                            ${USER_OBSERVATION_AREA_SUBMIT}
+    Wait Until Page Contains                Your home coordinates were successfully saved.
 
     Go To                                   ${PAGE_USER_1_PROFILE_URL}
     Wait Until Page Contains Element        //*[@id="mapid" and @data-map-loaded="true"]    timeout=30

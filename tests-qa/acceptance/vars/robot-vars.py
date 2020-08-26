@@ -9,7 +9,7 @@ GK_TIMEOUT_MINUTES = 2
 BROWSER = "Firefox"
 PROJECT_NAME = "GeoKrety"
 
-GK_URL = os.getenv('GEOKRETY_URL')
+GK_URL = os.getenv('GEOKRETY_URL', 'http://localhost:3001/')
 BS_ENABLED = os.getenv('BS_ENABLED', False)
 BS_USERNAME = os.getenv('BS_USERNAME')
 BS_TOKEN = os.getenv('BS_TOKEN')

@@ -5,52 +5,63 @@
 
 
 <p align="center">
-
-[![BrowserStack Status](https://automate.browserstack.com/badge.svg?badge_key=YmZSRFZLZkd5ekxCd3lmWlFaYm9JWXNaVTlSQVFPVzE5YnlyL3M3ZGlMdz0tLU9yQ0phRklBSWVsY2JOM0hJbU9xaXc9PQ==--b1021fe4a71c6f760aba832dfc1af772e102e4a0)](https://automate.browserstack.com/public-build/YmZSRFZLZkd5ekxCd3lmWlFaYm9JWXNaVTlSQVFPVzE5YnlyL3M3ZGlMdz0tLU9yQ0phRklBSWVsY2JOM0hJbU9xaXc9PQ==--b1021fe4a71c6f760aba832dfc1af772e102e4a0)
-
 <a href="https://geokrety.github.io/geokrety-website-qa/"><img src="https://image.flaticon.com/icons/svg/203/203165.svg" width="50" alt="QA Tests reports"/> <small>QA Tests reports</small></a>
-
 </p>
 
 ## Context
 
 This project includes automated tests -Quality Assurance (QA)- for  GeoKrety.org website ([source code](https://github.com/geokrety/geokrety-website), [service](https://geokrety.org)):
 - Tests rely on Python, RobotFramework, Selenium Frameworks
-- Instance tested is https://rec.geokrety.org (pre-production like environment)
-
-## Tested features
-- welcome page
-   - structure basis
-   - tracking code
-- movements page
-   - structure basis
-   - search waypoint
 
 # HowTo run QA
 
+## Prerequisite
+Install `Robot Framework`, `geckodriver` and a recent Firefox version (Tested with 79.0).
+```bash
+make install_robot-framework
+make download_geckodriver
+```
+
 ### From command line
 
-Quality Assurance tests are executed against default configuration located in `acceptance/vars/robot-vars.py`.
+Before starting, you have to define testing URL Address.
 
-- clone me
-- install python+pip
-- just execute `make help`
+```bash
+# Default value is
+$ export GEOKRETY_URL=http://localhost:3001/
+```
+
+Note: qa-tests depends on `GK_DEVEL` environment variable which activates some
+special quick access functions to be used only in tests.
+
+Warning: Runnin qa-tests will empty your database!
+
+The simplest way is to use the `Makefile` to launch all tests
+```bash
+make tests
+```
+
+But sometime you'll may have to launch them individually. Using the `robot`
+command directly will be necessary. Typical examples are:
+```bash
+$ robot --variable browser:Firefox -v images_dir:visual_images --output output.xml --debugfile debugfile.log --log log.html --report report.html --xunit xUnit.xml -d docs/local -V acceptance/vars/robot-vars.py acceptance/
+
+$ robot --variable browser:Firefox -v images_dir:visual_images --output output.xml --debugfile debugfile.log --log log.html --report report.html --xunit xUnit.xml -d docs/local -V acceptance/vars/robot-vars.py acceptance/180_News
+
+$ robot --variable browser:Firefox -v images_dir:visual_images --output output.xml --debugfile debugfile.log --log log.html --report report.html --xunit xUnit.xml -d docs/local -V acceptance/vars/robot-vars.py -s 50_Comments acceptance/180_News
+
+```
+
+It is possible to not display the browser window using the `HEADLESS=True` environment variable.
 
 ### From Travis
 
-From [travis](https://travis-ci.org/geokrety/geokrety-website-qa/requests) point of view,
- you could select target environment via `TARGET_ENV`.
-
-You could [trigger a custom build](https://blog.travis-ci.com/2017-08-24-trigger-custom-build) using for example this config:
-
-```
-env:
-- TARGET_ENV=feature/new-theme
-```
+Tests are included in the automated travis execution. It is only activated on `branches` not `PR`.
 
 ### HowTo run QA BrowserStack stage (Experimental)
 
 To run BrowserStack tests locally, you will need :
+- The `BrowserStackLocal` binary (`make download_bslocal`)
 - a BrowserStack username,
 - a BrowserStack token.
 
@@ -59,19 +70,8 @@ They could be retrieved from  https://automate.browserstack.com/
 ````
 export BS_USERNAME=jojo
 export BS_TOKEN=ThisIsVerySecretToken
-make testv2bs
+export TARGET_BS=True
 ````
-
-Now, from [travis](https://travis-ci.org/geokrety/geokrety-website-qa/requests) point of view,
- you had to enforce this stage via `TARGET_BS`.
-
-You could [trigger a custom build](https://blog.travis-ci.com/2017-08-24-trigger-custom-build) using for example this config:
-
-```
-env:
-- TARGET_BS=1 TARGET_ENV=feature/new-theme
-```
-
 
 # Contribute
 - [Wiki page](https://github.com/geokrety/geokrety-website-qa/wiki) includes good practices and tips,
@@ -79,6 +79,4 @@ env:
 
 
 # Credit
-
-- This repository is a fork of [kitconcept/robotframework-starter](https://github.com/kitconcept/robotframework-starter) : a ready to use robotframework+travis github repo
-
+- Those tests are based on @boly38 work in [geokrety-website-qa](https://github.com/geokrety/geokrety-website-qa)

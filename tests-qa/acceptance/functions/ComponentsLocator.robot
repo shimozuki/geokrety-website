@@ -430,16 +430,15 @@ ${NEWS_COMMENT_FORM_PANEL_CONTENT}               ${NEWS_COMMENT_FORM_PANEL}/div[
 ${NEWS_COMMENT_FORM_MESSAGE_INPUT}               //*[@id="content"]
 ${NEWS_COMMENT_FORM_SUBSCRIBE_CHECKBOX}          ${NEWS_COMMENT_FORM_PANEL}//*[@id="subscribe"]
 
+${NEWS_COMMENT_PANEL}                           //*[@id="newsCommentPanel"]
+
 ${NEWS_COMMENTS}                                //div[@data-gk-type="news-comment"]
+${NEWS_COMMENT_PANEL_HEADER}                    ${NEWS_COMMENTS}/div[contains(@class, "panel-heading")]
+${NEWS_COMMENT_PANEL_CONTENT}                   ${NEWS_COMMENTS}/div[contains(@class, "panel-body")]
+${NEWS_COMMENT_AUTHOR}                          ${NEWS_COMMENT_PANEL_HEADER}//a[@data-gk-link="user"]
+${NEWS_COMMENT_DELETE_BUTTON}                   ${NEWS_COMMENT_PANEL_HEADER}//button[@data-type="news-comment-delete"]
 ${NEWS_COMMENT_FIRST_COMMENT}                   ${NEWS_COMMENTS}\[1]
 ${NEWS_COMMENT_SECOND_COMMENT}                  ${NEWS_COMMENTS}\[2]
 ${NEWS_COMMENT_THIRD_COMMENT}                   ${NEWS_COMMENTS}\[3]
-
-${NEWS_COMMENT_PANEL}                           ${NEWS_COMMENTS}
-${NEWS_COMMENT_PANEL_HEADER}                    ${NEWS_COMMENT_PANEL}/div[contains(@class, "panel-heading")]
-${NEWS_COMMENT_PANEL_CONTENT}                   ${NEWS_COMMENT_PANEL}/div[contains(@class, "panel-body")]
-${NEWS_COMMENT_AUTHOR}                          ${NEWS_COMMENT_PANEL_HEADER}//a[@data-gk-link="user"]
-${NEWS_COMMENT_DELETE_BUTTON}                   ${NEWS_COMMENT_PANEL_HEADER}//button[@data-type="news-comment-delete"]
-
 
 #
