@@ -29,7 +29,7 @@ SELECT is(value, 2::double precision, 'User added') FROM gk_statistics_counters 
 -- Checking geokrety count stats
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (1, 'gk 1', 0, '2020-08-11 00:00:00+00');
 SELECT is(value, 1::double precision, 'GeoKrety count') FROM gk_statistics_counters WHERE name='stat_geokretow';
-INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (2, 'gk 2', 0, '2020-08-11 00:00:00+00');
+INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime", "owner") VALUES (2, 'gk 2', 0, '2020-08-11 00:00:00+00', 1);
 SELECT is(value, 2::double precision, 'GeoKrety count') FROM gk_statistics_counters WHERE name='stat_geokretow';
 INSERT INTO "gk_geokrety" ("id", "name", "type", "created_on_datetime") VALUES (3, 'gk 3', 0, '2020-08-11 00:00:00+00');
 SELECT is(value, 3::double precision, 'GeoKrety count') FROM gk_statistics_counters WHERE name='stat_geokretow';

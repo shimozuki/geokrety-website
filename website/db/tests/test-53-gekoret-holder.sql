@@ -78,7 +78,7 @@ SELECT is(holder, 1::bigint, 'holder from last position - comment') FROM gk_geok
 -- holder from last position - archive
 INSERT INTO "gk_geokrety" ("id", "name", "type", "owner", "created_on_datetime") VALUES (12, 'test 1', 0, 3, '2020-04-07 00:00:00+00');
 INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (14, 12, 1, '2020-04-07 00:00:00+00', 1);
-INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (15, 12, 2, '2020-04-07 01:00:00+00', 4);
+INSERT INTO "gk_moves" ("id", "geokret", "author", "moved_on_datetime", "move_type") VALUES (15, 12, 3, '2020-04-07 01:00:00+00', 4);
 SELECT is(holder, NULL, 'holder from last position - archive') FROM gk_geokrety WHERE id = 12::bigint;
 
 -- holder from last position - dip
