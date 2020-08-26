@@ -48,6 +48,7 @@ Post Comment Via Modal
     Sign In ${USER_1.name} Fast
     Go To Url                               ${PAGE_GEOKRETY_1_DETAILS_URL}
     Click Element                           ${GEOKRET_DETAILS_MOVES_COMMENT_BUTTONS}\[1]
+    Wait Until Modal                        Commenting a GeoKret move
     Input Text                              ${GEOKRET_MOVE_COMMENT_COMMENT_INPUT}       ${COMMENT}
     Click Button                            ${MODAL_DIALOG_SUBMIT_BUTTON}
     Location With Param Should Be           ${PAGE_GEOKRETY_1_DETAILS_URL}

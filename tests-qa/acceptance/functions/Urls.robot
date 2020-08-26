@@ -45,10 +45,22 @@ ${PAGE_USER_CHANGE_LANGUAGE_URL}        ${GK_URL}/en/user/preferred-language
 ${PAGE_USER_REFRESH_SECID_URL}          ${GK_URL}/en/user/refresh-secid
 ${PAGE_USER_CHANGE_EMAIL_URL}           ${GK_URL}/en/user/update-email
 
-${PAGE_GEOKRETY_CREATE_URL}             ${GK_URL}/en/geokrety/create
+${PAGE_USER_EMAIL_CHANGE_VALIDATE_URL}  ${GK_URL}/en/user/email-change/validate
 
+${PAGE_USER_CONTACT_URL}                ${GK_URL}/en/users/\${params.userid}/contact
+${PAGE_USER_1_CONTACT_URL}              ${GK_URL}/en/users/1/contact
+${PAGE_USER_2_CONTACT_URL}              ${GK_URL}/en/users/2/contact
+${PAGE_USER_3_CONTACT_URL}              ${GK_URL}/en/users/3/contact
+
+${PAGE_GEOKRETY_CREATE_URL}             ${GK_URL}/en/geokrety/create
+${PAGE_GEOKRETY_CLAIM_URL}              ${GK_URL}/en/geokrety/claim
+
+${PAGE_GEOKRETY_DETAILS_URL}            ${GK_URL}/en/geokrety/\${params.gkid}
 ${PAGE_GEOKRETY_1_DETAILS_URL}          ${GK_URL}/en/geokrety/GK0001
 ${PAGE_GEOKRETY_2_DETAILS_URL}          ${GK_URL}/en/geokrety/GK0002
 ${PAGE_GEOKRETY_3_DETAILS_URL}          ${GK_URL}/en/geokrety/GK0003
 
-${PAGE_USER_EMAIL_CHANGE_VALIDATE_URL}  ${GK_URL}/en/user/email-change/validate
+${PAGE_GEOKRETY_DETAILS_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/\${params.gkid}/contact-owner
+${PAGE_GEOKRETY_DETAILS_1_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/GK0001/contact-owner
+${PAGE_GEOKRETY_DETAILS_2_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/GK0002/contact-owner
+${PAGE_GEOKRETY_DETAILS_3_CONTACT_OWNER_URL}          ${GK_URL}/en/geokrety/GK0003/contact-owner

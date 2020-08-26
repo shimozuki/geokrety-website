@@ -246,8 +246,6 @@ Input validation has error help
     Wait Until Element Is Visible    //span[contains(@class, "help-block") and parent::div[.${element}]]    timeout=2
     Element Should Contain           //span[contains(@class, "help-block") and parent::div[.${element}]]    ${message}
 
-
-
 Element should have class
     [Arguments]  ${element}  ${className}
     Wait until page contains element    ${element}\[contains(@class, "${className}")]

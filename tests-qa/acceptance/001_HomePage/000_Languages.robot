@@ -1,9 +1,8 @@
 *** Settings ***
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Resource        ../functions/PageHome.robot
-Force Tags      Languages
+Force Tags      Home    Languages
 Suite Setup     Clear Database
-Force Tags      Home
 
 *** Test Cases ***
 Welcome: (EN)

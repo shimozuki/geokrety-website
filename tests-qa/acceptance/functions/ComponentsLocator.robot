@@ -142,6 +142,11 @@ ${GEOKRET_DETAILS_MISSION}                      //*[@id="geokretyMissionPanel"]/
 ${GEOKRET_DETAILS_FOUND_IT_TRACKING_CODE}       //*[@id="tracking_code"]
 ${GEOKRET_DETAILS_FOUND_IT_BUTTON}              //*[@id="foundItLogItButton"]
 
+${GEOKRET_DETAILS_WATCHERS_LINK}                //*[@id="geokretDetailsWatchersLink"]
+${GEOKRET_DETAILS_LOG_THIS_GEOKRET_LINK}        //*[@id="geokretDetailsLogThisGeokretLink"]
+${GEOKRET_DETAILS_TRANSFER_OWNERSHIP_LINK}      //*[@id="geokretDetailsOfferAdoptionLink"]
+${GEOKRET_DETAILS_PRINT_LABEL_LINK}             //*[@id="geokretDetailsPrintLabelLink"]
+
 ${GEOKRET_DETAILS_MAP_PANEL}                    //*[@id="geokretyDetailsMapPanel"]
 ${GEOKRET_DETAILS_MAP}                          //*[@id="mapid"]
 ${GEOKRET_DETAILS_MOVES}                        //div[@data-gk-type="move"]
@@ -169,6 +174,13 @@ ${GEOKRET_MOVE_IMAGES}                              //div[contains(@class, "gall
 ${GEOKRET_MOVE_FIRST_IMAGE}                         ${GEOKRET_MOVE_IMAGES}\[1]
 ${GEOKRET_MOVE_SECOND_IMAGE}                        ${GEOKRET_MOVE_IMAGES}\[2]
 
+################
+# USER PROFILE PAGE
+################
+
+${CLAIM_TRACKING_CODE_INPUT}                        //*[@id="inputTrackingCode"]
+${CLAIM_OWNER_CODE_INPUT}                           //*[@id="inputOwnerCode"]
+${CLAIM_OWNER_CODE}                                 //*[@id="geokretDetailsAdoptionMessage"]/strong[1]
 
 ################
 # USER PROFILE PAGE
@@ -295,6 +307,15 @@ ${USER_OWNED_GEOKRETY_TABLE}                    //*[@id="userOwnedGeoKretyTable"
 ################
 
 ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}       //*[@id="userOwnedGeoKretyRecentMovesTable"]
+
+
+################
+# USER CONTACT
+################
+
+${USER_CONTACT_USER_STATIC}                     //*[@id="contactedUser"]
+${USER_CONTACT_SUBJECT_INPUT}                   //*[@id="inputSubject"]
+${USER_CONTACT_MESSAGE_INPUT}                   //*[@id="message"]
 
 ################
 # USER EMAIL PREFERENCES

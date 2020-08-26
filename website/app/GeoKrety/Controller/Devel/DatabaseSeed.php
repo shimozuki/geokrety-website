@@ -19,11 +19,14 @@ class DatabaseSeed extends Base {
 
     public function users(\Base $f3, $terms_of_use = true) {
         header('Content-Type: text');
-        for ($i = 1; $i <= $f3->get('PARAMS.count'); ++$i) {
+        $start_i = $f3->get('GET.i') ?? 1;
+        for ($i = $start_i; $i < $f3->get('PARAMS.count') + $start_i; ++$i) {
             $user = new User();
             $user->username = sprintf('username%d', $i);
             $user->password = 'password';
-            $user->_email = sprintf('username%d+qa@geokrety.org', $i);
+            if (!$f3->exists('GET.noemail') || !filter_var($f3->get('GET.noemail'), FILTER_VALIDATE_BOOLEAN)) {
+                $user->_email = sprintf('username%d+qa@geokrety.org', $i);
+            }
             $user->preferred_language = 'en';
             $user->account_valid = User::USER_ACCOUNT_VALID;
             if ($terms_of_use) {

@@ -21,6 +21,7 @@ No Selection Should Show Error
     Go To Url                               ${PAGE_MOVES_URL}
     Open Panel                              ${MOVE_LOG_TYPE_PANEL}
     Click Button                            ${MOVE_LOG_TYPE_NEXT_BUTTON}
+    Open Panel                              ${MOVE_LOG_TYPE_PANEL}
     Panel validation has error              ${MOVE_LOG_TYPE_PANEL}
     Input validation has error help         ${MOVE_LOG_TYPE_DROPPED_RADIO}         This value is required.
     Element Text Should Be                  ${MOVE_LOG_TYPE_PANEL_HEADER_TEXT}      ${EMPTY}
