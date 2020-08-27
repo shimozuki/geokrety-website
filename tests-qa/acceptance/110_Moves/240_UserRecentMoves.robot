@@ -13,13 +13,16 @@ Suite Setup     Seed
 
 Moves Should Be Shown On User Recent Moves Page
     Go To Url                               ${PAGE_USER_RECENT_MOVES_URL}    userid=${USER_1.id}
-    Element Count Should Be                 ${USER_RECENT_MOVES_TABLE}/tbody/tr        6
+    Element Count Should Be                 ${USER_RECENT_MOVES_TABLE}/tbody/tr        5
     Check Move                              ${USER_RECENT_MOVES_TABLE}    ${1}    ${MOVE_6}    distance=14
-    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${2}    ${MOVE_25}
-    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${3}    ${MOVE_4}    distance=14
-    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${4}    ${MOVE_3}
-    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${5}    ${MOVE_2}
-    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${6}    ${MOVE_1}    distance=0
+    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${2}    ${MOVE_4}    distance=14
+    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${3}    ${MOVE_3}
+    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${4}    ${MOVE_2}
+    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${5}    ${MOVE_1}    distance=0
+
+    Go To Url                               ${PAGE_USER_RECENT_MOVES_URL}    userid=${USER_1.id}
+    Element Count Should Be                 ${USER_RECENT_MOVES_TABLE}/tbody/tr        1
+    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${1}    ${MOVE_25}
 
 Owner Recent Moves Page Should Be Empty
     Go To Url                               ${PAGE_USER_RECENT_MOVES_URL}    userid=${USER_2.id}
