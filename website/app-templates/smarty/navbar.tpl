@@ -89,7 +89,7 @@
                 </li>
                 {if GK_DEVEL}
                 <li>
-                    <div class="navbar-btn"><
+                    <div class="navbar-btn">
                         <div class="btn-group" role="group">
                             <a id="navbar-localmail" href="{'devel_home'|alias}" class="btn btn-danger">
                                 {fa icon="wrench"} Dev
@@ -97,11 +97,22 @@
                             <a id="navbar-localmail" href="{'devel_mail_list'|alias}" class="btn btn-danger">
                                 {fa icon="envelope"} Mailbox <span class="badge">{if is_countable($f3->get('SESSION.LOCAL_MAIL'))}{$f3->get('SESSION.LOCAL_MAIL')|count}{else}0{/if}</span>
                             </a>
-                            <a id="navbar-fastauth" href="{'devel_login_user'|alias:sprintf('@username=%s', username1)}" class="btn btn-danger">
-                                {fa icon="sign-in"} SignInFast</span>
-                            </a>
+
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {fa icon="sign-in"}
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuSignInFast">
+                                    <li><a href="{'devel_login_user'|alias:sprintf('@username=%s', username1)}">User 1</a></li>
+                                    <li><a href="{'devel_login_user'|alias:sprintf('@username=%s', username2)}">User 2</a></li>
+                                    <li><a href="{'devel_login_user'|alias:sprintf('@username=%s', username3)}">User 3</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="{'devel_logout_user'|alias}">Sign Out</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </p>
+                    </div>
                 </li>
                 {/if}
             </ul>
