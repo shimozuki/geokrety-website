@@ -13,7 +13,7 @@ Test Setup     Seed
 Moves Should Be Shown On GeoKret Page
     Go To Url                               ${PAGE_GEOKRETY_1_DETAILS_URL}
     Element Count Should Be                 ${GEOKRET_DETAILS_MOVES}        6
-    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${1}    ${MOVE_6}   distance=14
+    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${1}    ${MOVE_6}    distance=14
     Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${2}    ${MOVE_25}
     Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${3}    ${MOVE_4}    distance=14
     Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${4}    ${MOVE_3}

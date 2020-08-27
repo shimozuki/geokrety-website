@@ -30,6 +30,7 @@ User Can Unsubscribe
     Wait Until Modal                                Subscribe to this news?
     Click Button                                    ${MODAL_DIALOG_SUBMIT_BUTTON}
 
+    Go To Url                                       ${PAGE_NEWS_URL}                newsid=1
     Click Button                                    ${NEWS_SUBSCRIPTION_BUTTON}
     Wait Until Modal                                Do you really want to unsubscribe from this news?
     Click Button                                    ${MODAL_DIALOG_SUBMIT_BUTTON}

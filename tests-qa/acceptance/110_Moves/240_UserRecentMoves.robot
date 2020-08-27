@@ -14,7 +14,7 @@ Suite Setup     Seed
 Moves Should Be Shown On User Recent Moves Page
     Go To Url                               ${PAGE_USER_RECENT_MOVES_URL}    userid=${USER_1.id}
     Element Count Should Be                 ${USER_RECENT_MOVES_TABLE}/tbody/tr        6
-    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${1}    ${MOVE_6}   distance=14
+    Check Move                              ${USER_RECENT_MOVES_TABLE}    ${1}    ${MOVE_6}    distance=14
     Check Move                              ${USER_RECENT_MOVES_TABLE}    ${2}    ${MOVE_25}
     Check Move                              ${USER_RECENT_MOVES_TABLE}    ${3}    ${MOVE_4}    distance=14
     Check Move                              ${USER_RECENT_MOVES_TABLE}    ${4}    ${MOVE_3}
