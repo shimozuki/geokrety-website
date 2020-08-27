@@ -13,16 +13,13 @@ Suite Setup     Seed
 
 GeoKrety Should Be Shown On User Owned GeoKrety Page
     Go To Url                               ${PAGE_USER_OWNED_GEOKRETY_RECENT_MOVES_URL}    userid=${USER_2.id}
-    Element Count Should Be                 ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}/tbody/tr        5
+    Element Count Should Be                 ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}/tbody/tr        6
     Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${1}    ${MOVE_6}    distance=14
-    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${2}    ${MOVE_4}    distance=14
-    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${3}    ${MOVE_3}
-    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${4}    ${MOVE_2}
-    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${5}    ${MOVE_1}    distance=0
-
-    Go To Url                               ${PAGE_USER_OWNED_GEOKRETY_RECENT_MOVES_URL}    userid=${USER_2.id}
-    Element Count Should Be                 ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}/tbody/tr        1
-    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${1}    ${MOVE_25}
+    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${2}    ${MOVE_25}   author=${USER_2.name}
+    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${3}    ${MOVE_4}    distance=14
+    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${4}    ${MOVE_3}
+    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${5}    ${MOVE_2}
+    Check Move                              ${USER_OWNED_GEOKRETY_RECENT_MOVES_TABLE}    ${6}    ${MOVE_1}    distance=0
 
 Owner Inventory Page Should Be Empty
     Go To Url                               ${PAGE_USER_OWNED_GEOKRETY_RECENT_MOVES_URL}    userid=${USER_1.id}

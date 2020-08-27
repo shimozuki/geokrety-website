@@ -5,6 +5,7 @@ Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/moves.resource
 Resource        ../vars/geokrety.resource
+Resource        ../vars/users.resource
 Force Tags      Moves    GeoKret Details
 Test Setup     Seed
 
@@ -12,16 +13,13 @@ Test Setup     Seed
 
 Moves Should Be Shown On GeoKret Page
     Go To Url                               ${PAGE_GEOKRETY_1_DETAILS_URL}
-    Element Count Should Be                 ${GEOKRET_DETAILS_MOVES}        5
+    Element Count Should Be                 ${GEOKRET_DETAILS_MOVES}        6
     Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${1}    ${MOVE_6}    distance=14
-    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${2}    ${MOVE_4}    distance=14
-    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${3}    ${MOVE_3}
-    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${4}    ${MOVE_2}
-    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${5}    ${MOVE_1}    distance=0
-
-    Go To Url                               ${PAGE_GEOKRETY_1_DETAILS_URL}
-    Element Count Should Be                 ${GEOKRET_DETAILS_MOVES}        1
-    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${1}    ${MOVE_25}
+    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${2}    ${MOVE_25}   author=${USER_2.name}
+    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${3}    ${MOVE_4}    distance=14
+    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${4}    ${MOVE_3}
+    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${5}    ${MOVE_2}
+    Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${6}    ${MOVE_1}    distance=0
 
     Wait Until Page Contains Element        //*[@id="mapid" and @data-map-loaded="true"]    timeout=30
     Check Image                             ${GEOKRET_DETAILS_MAP_PANEL}
