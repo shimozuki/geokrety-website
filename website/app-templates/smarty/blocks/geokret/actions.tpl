@@ -23,7 +23,7 @@
 {if $f3->get('SESSION.CURRENT_USER')}
 <div class="col-md-4">{fa icon="heart"} <a id="geokretDetailsClaimLink" href="{'geokret_claim'|alias}">{t}Adopt this GeoKret{/t}</a></div>
 {else}
-<div class="col-md-4">{fa icon="heart"} <a id="geokretDetailsClaimLoginLink" href="{login_link}">{t}Login to claim this GeoKret{/t}</a></div>
+<div class="col-md-4">{fa icon="heart"} <a id="geokretDetailsClaimLoginLink" href="{'login'|login_link}">{t}Login to claim this GeoKret{/t}</a></div>
 {/if}
 {/if}
 {/function}

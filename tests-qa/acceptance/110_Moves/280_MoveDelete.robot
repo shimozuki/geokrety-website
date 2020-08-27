@@ -1,6 +1,5 @@
 *** Settings ***
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
-Library         RobotEyes
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/moves.resource
@@ -35,6 +34,7 @@ Delete Move
     Check GeoKret Move                              ${MODAL_PANEL}    ${1}    ${MOVE_1}
     Click Button                                    ${MODAL_DIALOG_SUBMIT_BUTTON}
     Page Should Not Contain Element                 ${GEOKRET_DETAILS_MOVE_1}
+    Location Should Contain                         ${PAGE_GEOKRETY_1_DETAILS_URL}
 
 *** Keywords ***
 

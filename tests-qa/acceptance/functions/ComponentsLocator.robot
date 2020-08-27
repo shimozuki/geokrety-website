@@ -155,6 +155,7 @@ ${GEOKRET_DETAILS_MAP}                          //*[@id="mapid"]
 ${GEOKRET_DETAILS_MOVES}                        //div[@data-gk-type="move"]
 ${GEOKRET_DETAILS_MOVE_1}                       //div[@data-gk-type="move" and @data-id="1"]
 ${GEOKRET_DETAILS_MOVE_2}                       //div[@data-gk-type="move" and @data-id="2"]
+${GEOKRET_DETAILS_MOVE_3}                       //div[@data-gk-type="move" and @data-id="3"]
 
 ${GEOKRET_DETAILS_MOVES_EDIT_BUTTONS}               //a[@data-type="move-edit"]
 ${GEOKRET_DETAILS_MOVES_DELETE_BUTTONS}             //button[@data-type="move-delete"]

@@ -87,3 +87,11 @@ Check Move Comment
     Wait Until Element Contains             ${_element}/div/a[@data-gk-link="user"]    ${author}
     Wait Until Element Contains             ${_element}/div/span[@class="move-comment"]    ${comment.strip()}
     Element should have class               ${_element}    list-group-item-info
+
+
+Check Move Comment Missing
+    [Arguments]    ${element}    ${author}=username1    ${comment}=${EMPTY}
+    ${_element} =      Replace Variables    ${element}
+    Wait Until Element Contains             ${_element}/div/a[@data-gk-link="user"]    ${author}
+    Wait Until Element Contains             ${_element}/div/span[@class="move-comment"]    ${comment.strip()}
+    Element should have class               ${_element}    list-group-item-danger

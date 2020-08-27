@@ -16,7 +16,7 @@
                     {t}Log a GeoKret{/t}
                 </a>
                 {else}
-                <a href="{login_link}" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#modal" data-type="form-login">
+                <a href="{'login'|login_link}" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#modal" data-type="form-login">
                     {fa icon="sign-in"} {t}Sign in{/t}
                 </a>
                 {/if}
@@ -104,9 +104,9 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuSignInFast">
-                                    <li><a href="{'devel_login_user'|alias:sprintf('@username=%s', username1)}">User 1</a></li>
-                                    <li><a href="{'devel_login_user'|alias:sprintf('@username=%s', username2)}">User 2</a></li>
-                                    <li><a href="{'devel_login_user'|alias:sprintf('@username=%s', username3)}">User 3</a></li>
+                                    <li><a href="{'devel_login_user'|login_link:sprintf('username=%s', username1)}">User 1</a></li>
+                                    <li><a href="{'devel_login_user'|login_link:sprintf('username=%s', username2)}">User 2</a></li>
+                                    <li><a href="{'devel_login_user'|login_link:sprintf('username=%s', username3)}">User 3</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="{'devel_logout_user'|alias}">Sign Out</a></li>
                                 </ul>

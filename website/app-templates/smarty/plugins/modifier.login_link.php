@@ -6,9 +6,9 @@
  * File:     function.login_link.php
  * Type:     function
  * Name:     login_link
- * Purpose:  outputs a font awsome icon
+ * Purpose:  outputs a font awesome icon
  * -------------------------------------------------------------
  */
-function smarty_function_login_link() {
-    return \GeoKrety\Service\Url::getGoto('login');
+function smarty_modifier_login_link(string $alias='login', $params=null) {
+    return \GeoKrety\Service\Url::getGoto($alias, $params);
 }

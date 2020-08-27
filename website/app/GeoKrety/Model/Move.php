@@ -187,6 +187,10 @@ class Move extends Base {
         return $f3->get('SESSION.CURRENT_USER') && !is_null($this->author) && $f3->get('SESSION.CURRENT_USER') === $this->author->id;
     }
 
+    public function isGeoKretLastPosition(): bool {
+        return $this->geokret->last_position === $this->id;
+    }
+
     public function getMoveOnPage(): int {
         $page = \Base::instance()->get('DB')->exec(
             'SELECT moves_get_on_page(?, ?, ?) AS page',
@@ -216,7 +220,7 @@ class Move extends Base {
             // Dropping pictures here instead of relying on db Triggers will delete files on S3
             $pictureModel = new Picture();
             $pictures = $pictureModel->find(['move = ?', $self->id]);
-            foreach ($pictures as $picture) {
+            foreach ($pictures ?: [] as $picture) {
                 $picture->erase();
             }
         });

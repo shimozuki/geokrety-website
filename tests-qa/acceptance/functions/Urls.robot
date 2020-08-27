@@ -30,6 +30,7 @@ ${PAGE_PICTURES_GALLERY_URL}            ${GK_URL}/en/picture/gallery
 
 ${PAGE_MOVES_EDIT_URL}                  ${GK_URL}/en/moves/\${params.moveid}/edit
 ${PAGE_MOVES_COMMENT_URL}               ${GK_URL}/en/moves/\${params.moveid}/comment
+${PAGE_MOVES_COMMENT_MISSING_URL}       ${GK_URL}/en/moves/\${params.moveid}/missing
 ${PAGE_MOVES_DELETE_URL}                ${GK_URL}/en/moves/\${params.moveid}/delete
 
 ${PAGE_USER_1_PROFILE_URL}              ${GK_URL}/en/users/1
