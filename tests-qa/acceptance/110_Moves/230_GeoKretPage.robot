@@ -7,7 +7,7 @@ Resource        ../vars/moves.resource
 Resource        ../vars/geokrety.resource
 Resource        ../vars/users.resource
 Force Tags      Moves    GeoKret Details
-Test Setup     Seed
+Test Setup      Seed
 
 *** Test Cases ***
 

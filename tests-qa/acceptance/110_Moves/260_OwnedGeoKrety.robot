@@ -1,6 +1,5 @@
 *** Settings ***
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
-Library         RobotEyes
 Resource        ../functions/FunctionsGlobal.robot
 Resource        ../functions/PageMoves.robot
 Resource        ../vars/moves.resource
@@ -13,7 +12,7 @@ Suite Setup     Seed
 
 GeoKrety Should Be Shown On User Owned GeoKrety Page
     Go To Url                               ${PAGE_USER_OWNED_GEOKRETY_URL}             userid=${USER_2.id}
-    Element Count Should Be                 ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr       6
+    Element Count Should Be                 ${USER_OWNED_GEOKRETY_TABLE}/tbody/tr       1
     Check GeoKrety Owned                    ${1}    ${GEOKRETY_1}    ${MOVE_6}          last_mover=${USER_1}     distance=28    caches=3
 
 Owned GeoKrety Page Should Be Empty
