@@ -88,8 +88,11 @@ class Login extends Base {
         if ($f3->exists('GET.goto')) {
             $goto = $f3->get('GET.goto');
             if (!in_array($goto, self::NO_REDIRECT_URLS)) {
-                $query = http_build_query($f3->unserialize(base64_decode($f3->get('GET.query'))));
-                $query = (!empty($query) ? '?' : '').$query;
+                $query = '';
+                if (!empty(base64_decode($f3->get('GET.query')))) {
+                    $query = http_build_query($f3->unserialize(base64_decode($f3->get('GET.query'))));
+                    $query = (!empty($query) ? '?' : '').$query;
+                }
                 $f3->reroute($ml->alias($goto, $params, $user->preferred_language).$query);
             }
         }

@@ -16,7 +16,6 @@ class Url extends \Prefab {
             'params' => urlencode(base64_encode($f3->serialize($f3->get('PARAMS')))),
             'query' => urlencode(base64_encode($f3->serialize($f3->get('GET')))),
         ];
-
         return GK_SITE_BASE_SERVER_URL.\Base::instance()->alias($alias, $params, $query);
     }
 }
