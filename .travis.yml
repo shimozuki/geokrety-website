@@ -124,7 +124,7 @@ jobs:
         - export HEADLESS=True
         - for i in $(seq 60); do httping -sGc1 -o 200,302 "${GEOKRETY_URL}" && echo OK && break ; sleep 1 ; done
         # Launch RobotFramework testing
-        - make test-qa
+        - make test-qa || ${DOCKER_COMPOSE} logs website
 #        - (cd tests-qa && robot --variable browser:Firefox --output output.xml --debugfile debugfile.log --log log.html --report report.html --xunit xUnit.xml -d docs/$TRAVIS_BRANCH -V acceptance/vars/robot-vars.py acceptance/)
 #        - (cd tests-qa && robot --variable browser:Chrome --output output.xml --debugfile debugfile.log --log log.html --report report.html --xunit xUnit.xml -d docs/$TRAVIS_BRANCH -V acceptance/vars/robot-vars.py acceptance/)
 
