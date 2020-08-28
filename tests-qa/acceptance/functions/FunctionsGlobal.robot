@@ -286,8 +286,8 @@ Check Image
     Compare Images
 
 Scroll Into View
-    [Arguments]    ${element}    ${align}=${TRUE}
-    Execute Javascript                      document.evaluate('${element}', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView('${align}');
+    [Arguments]    ${element}
+    Execute Javascript                      document.evaluate('${element}', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
 
 Wait Until Modal
     [Arguments]    ${title}

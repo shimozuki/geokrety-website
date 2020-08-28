@@ -22,7 +22,7 @@ Moves Should Be Shown On GeoKret Page
     Check GeoKret Move                      ${GEOKRET_DETAILS_MOVES}    ${6}    ${MOVE_1}    distance=0
 
     Wait Until Page Contains Element        //*[@id="mapid" and @data-map-loaded="true"]    timeout=30
-    Check Image                             ${GEOKRET_DETAILS_MAP_PANEL}
+    Check Image                             ${GEOKRET_DETAILS_MAP}
 
 *** Keywords ***
 
